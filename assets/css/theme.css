@@ -34,9 +34,9 @@ span.meta_date:hover, span.meta_comment:hover, span.meta_more:hover, span.meta_c
 .single_page_content blockquote{border-color:#eee #ffa500; border-left:5px solid #ffa500}
 .single_page_content ul li:before{background:none repeat scroll 0 0 #ffa500}
 .post_pagination{border-bottom:2px solid #ffa500; border-top:2px solid #ffa500}
-.prev{border-right:2px solid #ffa500}
-.angle_left{background-color:#ffa500}
-.angle_right{background-color:#71C42B}
+.prev{border-right:2px solid #ffa500} 
+.angle_left{background-color:#ffa500}// ลูกศร previous post in single.php
+.angle_right{background-color:#ffa500} // ลูกศร next post in single.php
 .error_page_content h1:after, .error_page_content h1:before{border:2px solid #ffa500}
 .error_page_content p{border-bottom:2px solid #ffa500; border-top:2px solid #ffa500}
 .error_page_content p:after{border-top:1px solid #ffa500}

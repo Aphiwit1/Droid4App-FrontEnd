@@ -59,7 +59,7 @@ session_start();
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav custom_nav">
-            <li class=""><a href="../index.html">Home</a></li>
+            <!--<li class=""><a href="../index.html">Home</a></li>
             <li class="dropdown"> <a href="#" class="" data-toggle="dropdown" role="button" aria-expanded="false">Archives</a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="archive-main.html">Archive</a></li>
@@ -70,7 +70,15 @@ session_start();
             </li>
             <li><a href="single.html">Single page</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="404.html">404 page</a></li>
+            <li><a href="404.html">404 page</a></li>-->
+            <li class=""><a href="../index.php">หน้าแรก</a></li>
+            <li><a href="category_game.php">เกม</a></li>
+            <li><a href="category_photo.php">รูปภาพและวิดิโอ</a></li>
+            <li><a href="category_photo.php">บันเทิง</a></li>
+            <li><a href="category_education.php">การศึกษา</a></li>
+            <li><a href="category_other.php">อื่นๆ</a></li>
+            <li><a href="category_newsAndroid.php">มือถือแอนดรอยด์</a></li>
+
           </ul>
         </div>
       </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>magExpress</title>
+<title>Droid4app</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="assets/css/slick.css">
 <link rel="stylesheet" type="text/css" href="assets/css/theme.css">
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Kanit|Raleway" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 <!--[if lt IE 9]>
 <script src="assets/js/html5shiv.min.js"></script>
 <script src="assets/js/respond.min.js"></script>
@@ -147,7 +148,7 @@ session_start();
               <ul class="fashion_catgnav">
                 <li>
                   <div class="catgimg2_container"> <a href="pages/single.html"><img alt="" src="images/390x240x1.jpg"></a> </div>
-                  <h2 class="catg_titile"><a href="pages/single.html">Heeeeeeeeeeeeeeeeeeee</a></h2>
+                  <h2 class="catg_titile"><a href="pages/single.html">สวัสดีครับสสสส</a></h2>
                   <div class="comments_box"> <span class="meta_date">14/12/2045</span> <span class="meta_comment"><a href="#">No Comments</a></span> <span class="meta_more"><a  href="#">Read More...</a></span> </div>
                   <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla...</p>
                 </li>
@@ -158,7 +159,7 @@ session_start();
                 <li>
                   <div class="media wow fadeInDown"> <a class="media-left" href="pages/single.html"><img src="images/112x112.jpg" alt=""></a>
                     <div class="media-body">
-                      <h4 class="media-heading"><a href="pages/single.html">Duis condimentum nunc pretium lobortis </a></h4>
+                      <h4 class="media-heading"><a href="pages/single.php">Hello my name is Hola Holaสวสัดีครับ </a></h4>
                       <div class="comments_box"> <span class="meta_date">14/12/2045</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
                     </div>
                   </div>
