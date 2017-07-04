@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="../assets/css/slick.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/theme.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Kanit|Raleway" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 <!--[if lt IE 9]>
 <script src="../assets/js/html5shiv.min.js"></script>
 <script src="../assets/js/respond.min.js"></script>
@@ -42,7 +43,7 @@
           </div>
         </div>
         <div class="header_bottom">
-          <div class="header_bottom_left"><a class="logo" href="../index.html">mag<strong>Express</strong> <span>A Pro Magazine Template</span></a></div>
+          <div class="header_bottom_left"><a class="logo" href="../index.html">Droid<strong>4app</strong> <span>A Pro Magazine Template</span></a></div>
           <div class="header_bottom_right"><a href="#"><img src="../images/addbanner_728x90_V1.jpg" alt=""></a></div>
         </div>
       </div>
@@ -58,11 +59,11 @@
           <ul class="nav navbar-nav custom_nav">
             <li class=""><a href="../index.php">หน้าแรก</a></li>
             <li><a href="category_game.php">เกม</a></li>
-            <li><a href="pages/single.html">รูปภาพและวิดิโอ</a></li>
-            <li><a href="pages/contact.html">บันเทิง</a></li>
-            <li><a href="pages/404.html">การศึกษา</a></li>
-            <li><a href="pages/404.html">อื่นๆ</a></li>
-            <li><a href="pages/404.html">มือถือแอนดรอยด์</a></li>
+            <li><a href="category_photo.php">รูปภาพและวิดิโอ</a></li>
+            <li><a href="category_photo.php">บันเทิง</a></li>
+            <li><a href="category_education.php">การศึกษา</a></li>
+            <li><a href="category_newsAndroid.php">มือถือแอนดรอยด์</a></li>
+            <li><a href="category_other.php">อื่นๆ</a></li>
           </ul>
         </div>
       </div>

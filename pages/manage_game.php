@@ -87,15 +87,10 @@
               </span> </h2>
 
 
-
-
-
           <?php
             require "../dbconnect.php";
             $sql = "SELECT * FROM data_post WHERE post_type = 1 ORDER BY post_id DESC";
             $query = mysqli_query($DBConect,$sql);
-
-
 
 
             while ($row = mysqli_fetch_array($query,MYSQLI_ASSOC)) {

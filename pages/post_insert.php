@@ -76,6 +76,26 @@
                  if ($type=="g") { // ส่งคำว่า เกม
                   header("Location:category_game.php");
                  }
+                 if ($type=="p") {
+                   # code...
+                   header("Location:category_photo.php");
+                 }
+                 if ($type=="en") {
+                   # code...
+                   header("Location:category_entertainment.php");
+                 }
+                 if ($type=="edu") {
+                   # code...
+                   header("Location:category_education.php");
+                 }
+                 if ($type=="o") {
+                   # code...
+                   header("Location:category_other.php");
+                 }
+                 if ($type=="an") {
+                   # code...
+                   header("Location:category_newsAndroid.php");
+                 }
 
 
 

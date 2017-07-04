@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="../assets/css/slick.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/theme.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Kanit|Raleway" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 <!--[if lt IE 9]>
 <script src="../assets/js/html5shiv.min.js"></script>
 <script src="../assets/js/respond.min.js"></script>
@@ -45,7 +46,7 @@ session_start();
           </div>
         </div>
         <div class="header_bottom">
-          <div class="header_bottom_left"><a class="logo" href="../index.html">mag<strong>Express</strong> <span>A Pro Magazine Template</span></a></div>
+          <div class="header_bottom_left"><a class="logo" href="../index.html">Droid<strong>4app</strong> <span>A Pro Magazine Template</span></a></div>
           <div class="header_bottom_right"><a href="#"><img src="../images/addbanner_728x90_V1.jpg" alt=""></a></div>
         </div>
       </div>
@@ -59,7 +60,7 @@ session_start();
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav custom_nav">
-            <li class=""><a href="../index.html">Home</a></li>
+            <!--<li class=""><a href="../index.html">Home</a></li>
             <li class="dropdown"> <a href="#" class="" data-toggle="dropdown" role="button" aria-expanded="false">Archives</a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="archive-main.html">Archive</a></li>
@@ -70,7 +71,15 @@ session_start();
             </li>
             <li><a href="single.html">Single page</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="404.html">404 page</a></li>
+            <li><a href="404.html">404 page</a></li>-->
+            <li class=""><a href="../index.php">หน้าแรก</a></li>
+            <li><a href="category_game.php">เกม</a></li>
+            <li><a href="category_photo.php">รูปภาพและวิดิโอ</a></li>
+            <li><a href="category_photo.php">บันเทิง</a></li>
+            <li><a href="category_education.php">การศึกษา</a></li>
+            <li><a href="category_newsAndroid.php">มือถือแอนดรอยด์</a></li>
+              <li><a href="category_other.php">อื่นๆ</a></li>
+
           </ul>
         </div>
       </div>
@@ -230,67 +239,30 @@ session_start();
       </div>
       <div class="col-lg-4 col-md-4">
         <div class="content_bottom_right">
-          <div class="single_bottom_rightbar">
-            <h2>Recent Post</h2>
-            <ul class="small_catg popular_catg wow fadeInDown">
-              <li>
-                <div class="media wow fadeInDown"> <a href="#" class="media-left"><img alt="" src="../images/112x112.jpg"> </a>
-                  <div class="media-body">
-                    <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                    <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="media wow fadeInDown"> <a href="#" class="media-left"><img alt="" src="../images/112x112.jpg"> </a>
-                  <div class="media-body">
-                    <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                    <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="media wow fadeInDown"> <a href="#" class="media-left"><img alt="" src="../images/112x112.jpg"> </a>
-                  <div class="media-body">
-                    <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                    <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
+
           <div class="single_bottom_rightbar">
             <ul role="tablist" class="nav nav-tabs custom-tabs">
-              <li class="active" role="presentation"><a data-toggle="tab" role="tab" aria-controls="home" href="#mostPopular">Most Popular</a></li>
-              <li role="presentation"><a data-toggle="tab" role="tab" aria-controls="messages" href="#recentComent">Recent Comment</a></li>
+              <li class="active" role="presentation"><a data-toggle="tab" role="tab" aria-controls="home" href="#mostPopular">Popular</a></li>
+              <li role="presentation"><a data-toggle="tab" role="tab" aria-controls="messages" href="#recentComent">Last Update</a></li>
             </ul>
             <div class="tab-content">
               <div id="mostPopular" class="tab-pane fade in active" role="tabpanel">
                 <ul class="small_catg popular_catg wow fadeInDown">
-                  <li>
-                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="../images/112x112.jpg" alt=""></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="../images/112x112.jpg" alt=""></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="../images/112x112.jpg" alt=""></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                      </div>
-                    </div>
-                  </li>
+                  <?php
+
+                  $sql = "SELECT * FROM data_post WHERE post_type = 1 ORDER BY post_view  DESC LIMIT 5";
+                  $query = mysqli_query($DBConect,$sql);
+
+                  while ($row = mysqli_fetch_array($query,MYSQLI_ASSOC)){
+                  echo "<li>";
+                  echo  "<div class='media wow fadeInDown'> <a class='media-left' href=''><img src='../images/112x112.jpg' alt=''></a>";
+                  echo    "<div class='media-body'>";
+                  echo      "<h4 class='media-heading'><a href=''>Duis condimentum nunc pretium lobortis </a></h4>";
+                  echo      "<p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>";
+                  echo    "</div>";
+                  echo  "</div>";
+                  echo "</li>";}
+                  ?>
                 </ul>
               </div>
               <div id="recentComent" class="tab-pane fade" role="tabpanel">

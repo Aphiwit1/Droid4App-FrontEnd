@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>magExpress</title>
+<title>Droid4app</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="assets/css/slick.css">
 <link rel="stylesheet" type="text/css" href="assets/css/theme.css">
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Kanit|Raleway" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 <!--[if lt IE 9]>
 <script src="assets/js/html5shiv.min.js"></script>
 <script src="assets/js/respond.min.js"></script>
@@ -76,8 +77,8 @@ session_start();
             <li class=""><a href="pages/category_photo.php">รูปภาพและวิดิโอ</a></li>
             <li class=""><a href="pages/category_entertainment.php">บันเทิง</a></li>
             <li class=""><a href="pages/category_education.php">การศึกษา</a></li>
-            <li class=""><a href="pages/category_other.php">อื่นๆ</a></li>
             <li class=""><a href="pages/category_newsAndroid.php">มือถือแอนดรอยด์</a></li>
+            <li class=""><a href="pages/category_other.php">อื่นๆ</a></li>
 
             <?php
               require "dbconnect.php";
@@ -142,155 +143,314 @@ session_start();
       <div class="col-lg-8 col-md-8">
         <div class="content_bottom_left">
           <div class="single_category wow fadeInDown">
-            <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">Game</a> </h2>
-            <div class="business_category_left wow fadeInDown">
-              <ul class="fashion_catgnav">
-                <li>
-                  <div class="catgimg2_container"> <a href="pages/single.html"><img alt="" src="images/390x240x1.jpg"></a> </div>
-                  <h2 class="catg_titile"><a href="pages/single.html">Aenean mollis metus sit amet ligula adipiscing</a></h2>
-                  <div class="comments_box"> <span class="meta_date">14/12/2045</span> <span class="meta_comment"><a href="#">No Comments</a></span> <span class="meta_more"><a  href="#">Read More...</a></span> </div>
-                  <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla...</p>
-                </li>
-              </ul>
-            </div>
-            <div class="business_category_right wow fadeInDown">
-              <ul class="small_catg">
-                <li>
-                  <div class="media wow fadeInDown"> <a class="media-left" href="pages/single.html"><img src="images/112x112.jpg" alt=""></a>
-                    <div class="media-body">
-                      <h4 class="media-heading"><a href="pages/single.html">Duis condimentum nunc pretium lobortis </a></h4>
-                      <div class="comments_box"> <span class="meta_date">14/12/2045</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
-                    <div class="media-body">
-                      <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                      <div class="comments_box"> <span class="meta_date">14/12/2045</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
-                    <div class="media-body">
-                      <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                      <div class="comments_box"> <span class="meta_date">14/12/2045</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
+            <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">เกม</a> </h2>
+            <?php
+              require "dbconnect.php"; //แสดงเกมซ้าย
+              $sql = "SELECT * FROM data_post WHERE post_type = 1  ORDER BY post_id DESC LIMIT 1 ";
+              $query = mysqli_query($DBConect,$sql);
+              $row = mysqli_fetch_assoc($query);
+
+              $post_id = $row['post_id'];
+              $sql_detail = "SELECT * FROM data_detailpost WHERE post_id = '$post_id'  LIMIT 1 ";
+              $query_detail = mysqli_query($DBConect,$sql_detail);
+              $row_detail = mysqli_fetch_assoc($query_detail);
+
+              $detail_substr = iconv_substr($row_detail['detailpost_detail'],0,112,"UTF-8")." ...";
+
+              echo "<div class='business_category_left wow fadeInDown'>";
+              echo   "<ul class='fashion_catgnav'>";
+              echo    " <li>";
+              echo      " <div class='catgimg2_container'> <a href='pages/single.php?id=".$row['post_id']."'><img alt='' src='images/".$row['post_img']."'></a> </div>";
+              echo      " <h2 class='catg_titile'><a href='pages/single.php?id=".$row['post_id']."'>".$row['post_name']."</a></h2>";
+              echo       "<div class='comments_box'> <span class='meta_date'>".$row['post_day']."/".$row['post_month']."/".$row['post_year']."</span> <span class='meta_comment'><a href=''>อ่าน : ".$row['post_view']."</a></span> <span class='meta_more'><a  href=''>Read More...</a></span> </div>";
+              echo       "<p>".$detail_substr."</p>";
+              echo    " </li>";
+              echo   "</ul>";
+              echo "</div>";
+             ?>
+
+            <?php
+            require 'dbconnect.php'; //แสดงเกมขวา
+
+            $sql = "SELECT * FROM data_post WHERE post_type = 1  ORDER BY post_id DESC LIMIT 1,3 ";
+            $query = mysqli_query($DBConect,$sql);
+
+            while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+              # code...
+              echo "<div class='business_category_right wow fadeInDown'>";
+              echo  "<ul class='small_catg'>";
+              echo    "<li>";
+              echo      "<div class='media wow fadeInDown'> <a class='media-left' href='pages/single.php?id=".$row['post_id']."'><img src='images/".$row['post_img']."' alt=''></a>";
+              echo        "<div class='media-body'>";
+              echo          "<h4 class='media-heading'><a href='pages/single.php?id=".$row['post_id']."'>".$row['post_name']."</a></h4>";
+              echo          "<div class='comments_box'> <span class='meta_date'>".$row['post_day']."/".$row['post_month']."/".$row['post_year']."</span> <span class='meta_comment'><a href=''>อ่าน : ".$row['post_view']."</a></span> </div>";
+              echo        "</div>";
+              echo      "</div>";
+              echo    "</li>" ;
+              echo  "</ul>";
+              echo "</div>";
+            }
+
+
+            ?>
+
+          </div>
+          <div class="single_category wow fadeInDown">
+            <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">รูปภาพและวิดิโอ</a> </h2>
+            <?php
+              require "dbconnect.php"; //แสดงรูปภาพและวิดิโอซ้าย
+              $sql = "SELECT * FROM data_post WHERE post_type = 2  ORDER BY post_id DESC LIMIT 1 ";
+              $query = mysqli_query($DBConect,$sql);
+              $row = mysqli_fetch_assoc($query);
+
+              $post_id = $row['post_id'];
+              $sql_detail = "SELECT * FROM data_detailpost WHERE post_id = '$post_id'  LIMIT 1 ";
+              $query_detail = mysqli_query($DBConect,$sql_detail);
+              $row_detail = mysqli_fetch_assoc($query_detail);
+
+              $detail_substr = iconv_substr($row_detail['detailpost_detail'],0,112,"UTF-8")." ...";
+
+              echo "<div class='business_category_left wow fadeInDown'>";
+              echo   "<ul class='fashion_catgnav'>";
+              echo    " <li>";
+              echo      " <div class='catgimg2_container'> <a href='pages/single.php?id=".$row['post_id']."'><img alt='' src='images/".$row['post_img']."'></a> </div>";
+              echo      " <h2 class='catg_titile'><a href='pages/single.php?id=".$row['post_id']."'>".$row['post_name']."</a></h2>";
+              echo       "<div class='comments_box'> <span class='meta_date'>".$row['post_day']."/".$row['post_month']."/".$row['post_year']."</span> <span class='meta_comment'><a href=''>อ่าน : ".$row['post_view']."</a></span> <span class='meta_more'><a  href=''>Read More...</a></span> </div>";
+              echo       "<p>".$detail_substr."</p>";
+              echo    " </li>";
+              echo   "</ul>";
+              echo "</div>";
+             ?>
+
+            <?php
+            require 'dbconnect.php'; //แสดงรูปภาพและวิดิโอขวา
+
+            $sql = "SELECT * FROM data_post WHERE post_type = 2  ORDER BY post_id DESC LIMIT 1,3 ";
+            $query = mysqli_query($DBConect,$sql);
+
+            while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+              # code...
+              echo "<div class='business_category_right wow fadeInDown'>";
+              echo  "<ul class='small_catg'>";
+              echo    "<li>";
+              echo      "<div class='media wow fadeInDown'> <a class='media-left' href='pages/single.php?id=".$row['post_id']."'><img src='images/".$row['post_img']."' alt=''></a>";
+              echo        "<div class='media-body'>";
+              echo          "<h4 class='media-heading'><a href='pages/single.php?id=".$row['post_id']."'>".$row['post_name']."</a></h4>";
+              echo          "<div class='comments_box'> <span class='meta_date'>".$row['post_day']."/".$row['post_month']."/".$row['post_year']."</span> <span class='meta_comment'><a href=''>อ่าน : ".$row['post_view']."</a></span> </div>";
+              echo        "</div>";
+              echo      "</div>";
+              echo    "</li>" ;
+              echo  "</ul>";
+              echo "</div>";
+            }
+
+
+            ?>
+
           </div>
           <div class="games_fashion_area">
             <div class="games_category">
               <div class="single_category">
-                <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">Games</a> </h2>
-                <ul class="fashion_catgnav wow fadeInDown">
-                  <li>
-                    <div class="catgimg2_container"> <a href="pages/single.html"><img alt="" src="images/390x240x1.jpg"></a> </div>
-                    <h2 class="catg_titile"><a href="#">Aenean mollis metus sit amet ligula adipiscing</a></h2>
-                    <div class="comments_box"> <span class="meta_date">14/12/2045</span> <span class="meta_comment"><a href="#">No Comments</a></span> <span class="meta_more"><a  href="#">Read More...</a></span> </div>
-                    <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla...</p>
-                  </li>
-                </ul>
-                <ul class="small_catg wow fadeInDown">
-                  <li>
-                    <div class="media"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                        <div class="comments_box"> <span class="meta_date">14/12/2045</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                        <div class="comments_box"> <span class="meta_date">14/12/2045</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
+                <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">บันเทิง</a> </h2>
+                <?php
+                require "dbconnect.php"; //แสดงบันเทิง
+                $sql = "SELECT * FROM data_post WHERE post_type = 3  ORDER BY post_id DESC LIMIT 1 ";
+                $query = mysqli_query($DBConect,$sql);
+                $row = mysqli_fetch_assoc($query);
+
+                $post_id = $row['post_id'];
+                $sql_detail = "SELECT * FROM data_detailpost WHERE post_id = '$post_id'  LIMIT 1 ";
+                $query_detail = mysqli_query($DBConect,$sql_detail);
+                $row_detail = mysqli_fetch_assoc($query_detail);
+
+                $detail_substr = iconv_substr($row_detail['detailpost_detail'],0,112,"UTF-8")." ...";
+
+                echo "<ul class'fashion_catgnav wow fadeInDown'>";
+                echo  "<li>";
+                echo    "<div class='catgimg2_container'> <a href='pages/single.php?id=".$row['post_id']."'><img alt='' src='images/".$row['post_img']."'></a> </div>";
+                echo    "<h2 class='catg_titile'><a href='pages/single.php?id=".$row['post_id']."'>".$row['post_name']."</a></h2>";
+                echo    "<div class='comments_box'> <span class='meta_date'>".$row['post_day']."/".$row['post_month']."/".$row['post_year']."</span> <span class='meta_comment'><a href=''>อ่าน : ".$row['post_view']."</a></span> <span class='meta_more'><a  href='pages/single.php?id=".$row['post_id']."'>Read More...</a></span> </div>";
+                echo    "<p>$detail_substr</p><br>";
+                echo  "</li>";
+                echo "</ul>";
+                ?>
+
+                <?php
+                require 'dbconnect.php';
+
+                $sql = "SELECT * FROM data_post WHERE post_type = 3  ORDER BY post_id DESC LIMIT 1,2 ";
+                $query = mysqli_query($DBConect,$sql);
+
+                while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)){
+                echo "<ul class='small_catg wow fadeInDown'>";
+                echo  "<li>";
+                echo    "<div class='media'> <a class='media-left' href=''><img src='images/112x112.jpg' alt=''></a>";
+                echo      "<div class='media-body'>";
+                echo        "<h4 class='media-heading'><a href=''>".$row['post_name']."</a></h4>";
+                echo        "<div class='comments_box'> <span class='meta_date'>".$row['post_day']."/".$row['post_month']."/".$row['post_year']."</span> <span class='meta_comment'><a href=''>อ่าน : ".$row['post_view']."</a></span> </div>";
+                echo      "</div>";
+                echo    "</div>";
+                echo  "</li>";
+                echo "</ul>"; }
+                ?>
               </div>
             </div>
             <div class="fashion_category">
               <div class="single_category">
                 <div class="single_category wow fadeInDown">
-                  <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">Fashion</a> </h2>
-                  <ul class="fashion_catgnav wow fadeInDown">
-                    <li>
-                      <div class="catgimg2_container"> <a href="#"><img alt="" src="images/390x240x1.jpg"></a> </div>
-                      <h2 class="catg_titile"><a href="#">Aenean mollis metus sit amet ligula adipiscing</a></h2>
-                      <div class="comments_box"> <span class="meta_date">14/12/2045</span> <span class="meta_comment"><a href="#">No Comments</a></span> <span class="meta_more"><a  href="#">Read More...</a></span> </div>
-                      <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla...</p>
-                    </li>
-                  </ul>
-                  <ul class="small_catg wow fadeInDown">
-                    <li>
-                      <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
-                        <div class="media-body">
-                          <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                          <div class="comments_box"> <span class="meta_date">14/12/2045</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
-                        <div class="media-body">
-                          <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                          <div class="comments_box"> <span class="meta_date">14/12/2045</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
+                  <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">การศึกษา</a> </h2>
+
+                  <?php
+                  require "dbconnect.php"; //แสดงการศึกษา
+
+                  $sql = "SELECT * FROM data_post WHERE post_type = 4  ORDER BY post_id DESC LIMIT 1 ";
+                  $query = mysqli_query($DBConect,$sql);
+                  $row = mysqli_fetch_assoc($query);
+
+                  $post_id = $row['post_id'];
+                  $sql_detail = "SELECT * FROM data_detailpost WHERE post_id = '$post_id'  LIMIT 1 ";
+                  $query_detail = mysqli_query($DBConect,$sql_detail);
+                  $row_detail = mysqli_fetch_assoc($query_detail);
+
+                  $detail_substr = iconv_substr($row_detail['detailpost_detail'],0,112,"UTF-8")." ...";
+
+                  echo "<ul class='fashion_catgnav wow fadeInDown'>";
+                  echo  "<li>";
+                  echo    "<div class='catgimg2_container'> <a href='pages/single.php?id=".$row['post_name']."'><img alt='' src='images/".$row['post_img']."'></a> </div>";
+                  echo    "<h2 class='catg_titile'><a href=''>".$row['post_name']."</a></h2>";
+                  echo    "<div class='comments_box'> <span class='meta_date'>".$row['post_day']."/".$row['post_month']."/".$row['post_year']."</span> <span class='meta_comment'><a href=''>No Comments</a></span> <span class='meta_more'><a  href=''>Read More...</a></span> </div>";
+                  echo    "<p>$detail_substr</p><br>";
+                  echo  "</li>";
+                  echo "</ul>";
+                  ?>
+
+
+                  <?php
+                  require 'dbconnect.php';
+
+                  $sql = "SELECT * FROM data_post WHERE post_type = 4  ORDER BY post_id DESC LIMIT 1,2 ";
+                  $query = mysqli_query($DBConect,$sql);
+
+                  while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)){
+                  echo "<ul class='small_catg wow fadeInDown'>";
+                  echo  "<li>";
+                  echo    "<div class='media'> <a class='media-left' href=''><img src='images/112x112.jpg' alt=''></a>";
+                  echo      "<div class='media-body'>";
+                  echo        "<h4 class='media-heading'><a href=''>".$row['post_name']."</a></h4>";
+                  echo        "<div class='comments_box'> <span class='meta_date'>".$row['post_day']."/".$row['post_month']."/".$row['post_year']."</span> <span class='meta_comment'><a href=''>อ่าน : ".$row['post_view']."</a></span> </div>";
+                  echo      "</div>";
+                  echo    "</div>";
+                  echo  "</li>";
+                  echo "</ul>"; }
+                  ?>
+
                 </div>
               </div>
             </div>
           </div>
-          <div class="technology_catrarea">
-            <div class="single_category">
-              <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">Technology</a> </h2>
-              <div class="business_category_left">
-                <ul class="fashion_catgnav wow fadeInDown">
-                  <li>
-                    <div class="catgimg2_container"> <a href="#"><img alt="" src="images/390x240x1.jpg"></a> </div>
-                    <h2 class="catg_titile"><a href="#">Aenean mollis metus sit amet ligula adipiscing</a></h2>
-                    <div class="comments_box"> <span class="meta_date">14/12/2045</span> <span class="meta_comment"><a href="#">No Comments</a></span> <span class="meta_more"><a  href="#">Read More...</a></span> </div>
-                    <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla...</p>
-                  </li>
-                </ul>
+
+
+
+          <div class="games_fashion_area">
+            <div class="games_category">
+              <div class="single_category">
+                <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">อื่นๆ</a></a> </h2>
+                <?php
+                require "dbconnect.php"; //แสดงบันเทิง
+                $sql = "SELECT * FROM data_post WHERE post_type = 5  ORDER BY post_id DESC LIMIT 1 ";
+                $query = mysqli_query($DBConect,$sql);
+                $row = mysqli_fetch_assoc($query);
+
+                $post_id = $row['post_id'];
+                $sql_detail = "SELECT * FROM data_detailpost WHERE post_id = '$post_id'  LIMIT 1 ";
+                $query_detail = mysqli_query($DBConect,$sql_detail);
+                $row_detail = mysqli_fetch_assoc($query_detail);
+
+                $detail_substr = iconv_substr($row_detail['detailpost_detail'],0,110,"UTF-8")." ...";
+
+                echo "<ul class'fashion_catgnav wow fadeInDown'>";
+                echo  "<li>";
+                echo    "<div class='catgimg2_container'> <a href='pages/single.php?id=".$row['post_id']."'><img alt='' src='images/".$row['post_img']."'></a> </div>";
+                echo    "<h2 class='catg_titile'><a href='pages/single.php?id=".$row['post_id']."'>".$row['post_name']."</a></h2>";
+                echo    "<div class='comments_box'> <span class='meta_date'>".$row['post_day']."/".$row['post_month']."/".$row['post_year']."</span> <span class='meta_comment'><a href=''>อ่าน : ".$row['post_view']."</a></span> <span class='meta_more'><a  href='pages/single.php?id=".$row['post_id']."'>Read More...</a></span> </div>";
+                echo    "<p>$detail_substr</p><br>";
+                echo  "</li>";
+                echo "</ul>";
+                ?>
+
+                <?php
+                require 'dbconnect.php';
+
+                $sql = "SELECT * FROM data_post WHERE post_type = 5  ORDER BY post_id DESC LIMIT 1,2 ";
+                $query = mysqli_query($DBConect,$sql);
+
+                while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)){
+                echo "<ul class='small_catg wow fadeInDown'>";
+                echo  "<li>";
+                echo    "<div class='media'> <a class='media-left' href=''><img src='images/112x112.jpg' alt=''></a>";
+                echo      "<div class='media-body'>";
+                echo        "<h4 class='media-heading'><a href=''>".$row['post_name']."</a></h4>";
+                echo        "<div class='comments_box'> <span class='meta_date'>".$row['post_day']."/".$row['post_month']."/".$row['post_year']."</span> <span class='meta_comment'><a href=''>อ่าน : ".$row['post_view']."</a></span> </div>";
+                echo      "</div>";
+                echo    "</div>";
+                echo  "</li>";
+                echo "</ul>"; }
+                ?>
               </div>
-              <div class="business_category_right">
-                <ul class="small_catg wow fadeInDown">
-                  <li>
-                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                        <div class="comments_box"> <span class="meta_date">14/12/2045</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                        <div class="comments_box"> <span class="meta_date">14/12/2045</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                        <div class="comments_box"> <span class="meta_date">14/12/2045</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
+            </div>
+            <div class="fashion_category">
+              <div class="single_category">
+                <div class="single_category wow fadeInDown">
+                  <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">มือถือแอนดรอยด์</a> </h2>
+
+                  <?php
+                  require "dbconnect.php"; //แสดงการศึกษา
+
+                  $sql = "SELECT * FROM data_post WHERE post_type = 6  ORDER BY post_id DESC LIMIT 1 ";
+                  $query = mysqli_query($DBConect,$sql);
+                  $row = mysqli_fetch_assoc($query);
+
+                  $post_id = $row['post_id'];
+                  $sql_detail = "SELECT * FROM data_detailpost WHERE post_id = '$post_id'  LIMIT 1 ";
+                  $query_detail = mysqli_query($DBConect,$sql_detail);
+                  $row_detail = mysqli_fetch_assoc($query_detail);
+
+                  $detail_substr = iconv_substr($row_detail['detailpost_detail'],0,112,"UTF-8")." ...";
+
+                  echo "<ul class='fashion_catgnav wow fadeInDown'>";
+                  echo  "<li>";
+                  echo    "<div class='catgimg2_container'> <a href='pages/single.php?id=".$row['post_name']."'><img alt='' src='images/".$row['post_img']."'></a> </div>";
+                  echo    "<h2 class='catg_titile'><a href=''>".$row['post_name']."</a></h2>";
+                  echo    "<div class='comments_box'> <span class='meta_date'>".$row['post_day']."/".$row['post_month']."/".$row['post_year']."</span> <span class='meta_comment'><a href=''>No Comments</a></span> <span class='meta_more'><a  href=''>Read More...</a></span> </div>";
+                  echo    "<p>$detail_substr</p><br>";
+                  echo  "</li>";
+                  echo "</ul>";
+                  ?>
+
+
+                  <?php
+                  require 'dbconnect.php';
+
+                  $sql = "SELECT * FROM data_post WHERE post_type = 6  ORDER BY post_id DESC LIMIT 1,2 ";
+                  $query = mysqli_query($DBConect,$sql);
+
+                  while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)){
+                  echo "<ul class='small_catg wow fadeInDown'>";
+                  echo  "<li>";
+                  echo    "<div class='media'> <a class='media-left' href=''><img src='images/112x112.jpg' alt=''></a>";
+                  echo      "<div class='media-body'>";
+                  echo        "<h4 class='media-heading'><a href=''>".$row['post_name']."</a></h4>";
+                  echo        "<div class='comments_box'> <span class='meta_date'>".$row['post_day']."/".$row['post_month']."/".$row['post_year']."</span> <span class='meta_comment'><a href=''>อ่าน : ".$row['post_view']."</a></span> </div>";
+                  echo      "</div>";
+                  echo    "</div>";
+                  echo  "</li>";
+                  echo "</ul>"; }
+                  ?>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
       <div class="col-lg-4 col-md-4">
@@ -301,7 +461,7 @@ session_start();
               <li>
                 <div class="media wow fadeInDown"> <a href="#" class="media-left"><img alt="" src="images/112x112.jpg"> </a>
                   <div class="media-body">
-                    <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
+                    <h4 class="media-heading"><a href="#">งานวิจัย GSMA ชี้จีนจะเป็นตลาด 5G ที่ใหญ่ที่สุดภายในปี 2025 </a></h4>
                     <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
                   </div>
                 </div>
@@ -309,7 +469,7 @@ session_start();
               <li>
                 <div class="media wow fadeInDown"> <a href="#" class="media-left"><img alt="" src="images/112x112.jpg"> </a>
                   <div class="media-body">
-                    <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
+                    <h4 class="media-heading"><a href="#">งานวิจัย GSMA ชี้จีนจะเป็นตลาด 5G ที่ใหญ่ที่สุดภายในปี 2025 </a></h4>
                     <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
                   </div>
                 </div>
@@ -317,7 +477,7 @@ session_start();
               <li>
                 <div class="media wow fadeInDown"> <a href="#" class="media-left"><img alt="" src="images/112x112.jpg"> </a>
                   <div class="media-body">
-                    <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
+                    <h4 class="media-heading"><a href="#">งานวิจัย GSMA ชี้จีนจะเป็นตลาด 5G ที่ใหญ่ที่สุดภายในปี 2025</a></h4>
                     <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
                   </div>
                 </div>
@@ -335,7 +495,7 @@ session_start();
                   <li>
                     <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
                       <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
+                        <h4 class="media-heading"><a href="#">งานวิจัย GSMA ชี้จีนจะเป็นตลาด 5G ที่ใหญ่ที่สุดภายในปี 2025</a></h4>
                         <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
                       </div>
                     </div>
@@ -343,7 +503,7 @@ session_start();
                   <li>
                     <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
                       <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
+                        <h4 class="media-heading"><a href="#">งานวิจัย GSMA ชี้จีนจะเป็นตลาด 5G ที่ใหญ่ที่สุดภายในปี 2025</a></h4>
                         <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
                       </div>
                     </div>
@@ -351,7 +511,7 @@ session_start();
                   <li>
                     <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
                       <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
+                        <h4 class="media-heading"><a href="#">งานวิจัย GSMA ชี้จีนจะเป็นตลาด 5G ที่ใหญ่ที่สุดภายในปี 2025</a></h4>
                         <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
                       </div>
                     </div>
@@ -363,7 +523,7 @@ session_start();
                   <li>
                     <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
                       <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
+                        <h4 class="media-heading"><a href="#">งานวิจัย GSMA ชี้จีนจะเป็นตลาด 5G ที่ใหญ่ที่สุดภายในปี 2025</a></h4>
                         <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
                       </div>
                     </div>
@@ -371,7 +531,7 @@ session_start();
                   <li>
                     <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
                       <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
+                        <h4 class="media-heading"><a href="#">งานวิจัย GSMA ชี้จีนจะเป็นตลาด 5G ที่ใหญ่ที่สุดภายในปี 2025</a></h4>
                         <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
                       </div>
                     </div>
@@ -379,7 +539,7 @@ session_start();
                   <li>
                     <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
                       <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
+                        <h4 class="media-heading"><a href="#">งานวิจัย GSMA ชี้จีนจะเป็นตลาด 5G ที่ใหญ่ที่สุดภายในปี 2025</a></h4>
                         <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
                       </div>
                     </div>
