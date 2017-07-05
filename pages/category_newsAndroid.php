@@ -32,7 +32,7 @@
               <li><a href="../index.html">Home</a></li>
               <li><a href="page.html">About</a></li>
               <li><a href="contact.html">Contact</a></li>
-              <!--  <li><a href="404.html">Error Page</a></li>-->
+              <li><a href="404.html">Error Page</a></li>
             </ul>
           </div>
           <div class="header_top_right">
@@ -43,7 +43,7 @@
           </div>
         </div>
         <div class="header_bottom">
-          <div class="header_bottom_left"><a class="logo" href="../index.html">Droid<strong>4app</strong> <span>Review applicationse</span></a></div>
+          <div class="header_bottom_left"><a class="logo" href="../index.html">Droid<strong>4app</strong> <span>A Pro Magazine Template</span></a></div>
           <div class="header_bottom_right"><a href="#"><img src="../images/addbanner_728x90_V1.jpg" alt=""></a></div>
         </div>
       </div>

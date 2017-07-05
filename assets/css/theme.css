@@ -2,9 +2,9 @@
 .scrollToTop:hover, .scrollToTop:focus, .pagination_area ul li a{background-color:#fff; color:#ffa500; border-color:1px solid #ffa500}
 .top_nav li a:hover{color:#FFA500}
 .search_form input[type="submit"]:hover{background-color:#FFA500}
-.navbar-default{background-color:#12343B; border-color:#12343B}
+.navbar-default{background-color:#ffa500; border-color:#ffa500}
 .custom_nav li a:hover{border-color:#FFAE00}
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{background-color:#fff; color:#336699; border-color:#FFAE00}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{background-color:#fff; color:#ffa500; border-color:#FFAE00}
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{background-color:#fff; color:#ffa500; border-color:#FFAE00}
 .navbar-nav > li > .dropdown-menu{margin-top:1px; background-color:#ffa500}
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{background-color:#fff; color:#ffa500; border-color:#FFAE00; padding-left:20px}
@@ -12,7 +12,7 @@
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{background-color:#fcc259}
 .slick-prev, .slick-next{background-color:#ffa500}
 .slick-prev:hover, .slick-next:hover{opacity:0.80}
-.bold_line span{background-color:#C5C5C5}
+.bold_line span{background-color:#ffa500}
 .catg1_nav li .post_titile a:hover{color:#FFA500}
 .content_middle_middle:after{background-color:#ffa500}
 .content_middle_middle:before{background-color:#ffa500}
