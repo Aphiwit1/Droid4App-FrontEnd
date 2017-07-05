@@ -33,7 +33,7 @@
               <li><a href="../index.html">Home</a></li>
               <li><a href="page.html">About</a></li>
               <li><a href="contact.html">Contact</a></li>
-              <li><a href="404.html">Error Page</a></li>
+              <!--  <li><a href="404.html">Error Page</a></li>-->
             </ul>
           </div>
           <div class="header_top_right">

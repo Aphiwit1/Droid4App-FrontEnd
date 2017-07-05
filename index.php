@@ -37,7 +37,7 @@ session_start();
               <li><a href="index.html">Home</a></li>
               <li><a href="pages/page.html">About</a></li>
               <li><a href="pages/contact.html">Contact</a></li>
-              <li><a href="pages/404.html">Error Page</a></li>
+                <!--  <li><a href="404.html">Error Page</a></li>-->
             </ul>
           </div>
           <div class="header_top_right">
@@ -611,7 +611,7 @@ session_start();
         <div class="col-lg-4 col-md-4 col-sm-4">
           <div class="single_footer_top wow fadeInRight">
             <h2>About Us</h2>
-            <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed nec laoreet orci, eget ullamcorper quam. Phasellus lorem neque, </p>
+            <p>We are students. This website create for improving programming skills. </p>
           </div>
         </div>
       </div>
