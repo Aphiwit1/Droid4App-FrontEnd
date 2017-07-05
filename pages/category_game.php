@@ -112,7 +112,7 @@
               echo "<ul class='fashion_catgnav'>";
               echo "<li>";
               echo "<div class='catgimg2_container'> <a href='single.php?id=".$post_id."'><img src='../images/".$post_img."'></a> </div>";
-              echo "<h2 class='catg_titile'><a href='single.php?id=".$post_id."'>".$post_name."</a></h2>";
+              echo "<h4 class='media-heading'><a href='single.php?id=".$post_id."'>".$post_name."</a></h4>";
               echo "<div class='comments_box'> <span class='meta_date'>".$post_day."/".$post_month."/".$post_year."</span> <span class='meta_comment'><a href='../index.php'>No Comments</a></span> <span class='meta_more'><a  href=''../single.php?id=".$post_id."'>Read More...</a></span> </div>";
               echo "<p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla...</p>";
               echo "</li>";

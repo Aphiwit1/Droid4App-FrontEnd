@@ -1,30 +1,31 @@
-.scrollToTop, .pagination_area ul li a:hover{background-color:#ffa500; color:#fff}
+
+.scrollToTop, .pagination_area ul li a:hover{background-color:#ffa500; color:#fff} //ปุ่ม scrollToTop
 .scrollToTop:hover, .scrollToTop:focus, .pagination_area ul li a{background-color:#fff; color:#ffa500; border-color:1px solid #ffa500}
 .top_nav li a:hover{color:#FFA500}
 .search_form input[type="submit"]:hover{background-color:#FFA500}
-.navbar-default{background-color:#ffa500; border-color:#ffa500}
-.custom_nav li a:hover{border-color:#FFAE00}
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{background-color:#fff; color:#ffa500; border-color:#FFAE00}
+.navbar-default{background-color:#000; border-color:#000} //border รอบแถบยาวๆ
+.custom_nav li a:hover{border-color:#ffa500}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{background-color:#fff; color:#336699; border-color:: #ffa500} //ตัวหนังสือตรงแทบยาวๆ เวลากด จะเน้นชัดเป็นสีนี้
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{background-color:#fff; color:#ffa500; border-color:#FFAE00}
 .navbar-nav > li > .dropdown-menu{margin-top:1px; background-color:#ffa500}
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{background-color:#fff; color:#ffa500; border-color:#FFAE00; padding-left:20px}
 .navbar-default .navbar-nav .open .dropdown-menu > li > a{color:#fff}
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{background-color:#fcc259}
-.slick-prev, .slick-next{background-color:#ffa500}
+.slick-prev, .slick-next{background-color:#ffa500} //ปุ้มเลื่อนซเาย ขวา ตรง most หน้าแรก
 .slick-prev:hover, .slick-next:hover{opacity:0.80}
-.bold_line span{background-color:#ffa500}
+.bold_line span{background-color:#C5C5C5} //แถบ line สองเส้น บริเวณข้างๆ TOPIC แต่ละแันในหน้าแรก
 .catg1_nav li .post_titile a:hover{color:#FFA500}
 .content_middle_middle:after{background-color:#ffa500}
 .content_middle_middle:before{background-color:#ffa500}
 .single_featured_slide > h2 a:hover{color:#ffa500}
-.catg_titile a:hover{color:#ffa500}
+.catg_titile a:hover{color:#336699}
 span.meta_date:hover, span.meta_comment:hover, span.meta_more:hover, span.meta_comment a:hover, span.meta_more a:hover{color:#ffa500}
-.media-heading a:hover{color:#ffa500}
-.single_bottom_rightbar > h2{border-bottom:3px solid #ffa500}
+.media-heading a:hover{color: #ffa500} //topic ทุกอันเวลาเปลี่ยนสีจะเป็นสีนี้
+.single_bottom_rightbar > h2{border-bottom:3px solid : #ffa500}
 .nav-tabs{border-bottom:1px solid #ffa500}
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus{color:#ffa500}
-.nav-tabs > li.active > a:hover{color:#ffa500 !important}
-.nav-tabs > li > a:hover{background-color:#ffa500; color:#fff !important}
+.nav-tabs > li.active > a:hover{color:: #ffa500 !important}
+.nav-tabs > li > a:hover{background-color::#ffa500; color:#fff !important}
 .single_bottom_rightbar ul li > a:hover{color:#FFA500}
 .labels_nav li a:hover{background-color:#FFA500}
 .breadcrumb{background-color:#ffa500; border:2px solid #ffa500}
@@ -35,7 +36,7 @@ span.meta_date:hover, span.meta_comment:hover, span.meta_more:hover, span.meta_c
 .post_pagination{border-bottom:2px solid #ffa500; border-top:2px solid #ffa500}
 .prev{border-right:2px solid #ffa500}
 .angle_left{background-color:#ffa500}
-.angle_right{background-color:#ffa500}
+.angle_right{background-color:#71C42B}
 .error_page_content h1:after, .error_page_content h1:before{border:2px solid #ffa500}
 .error_page_content p{border-bottom:2px solid #ffa500; border-top:2px solid #ffa500}
 .error_page_content p:after{border-top:1px solid #ffa500}
