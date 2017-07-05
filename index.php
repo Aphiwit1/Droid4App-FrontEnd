@@ -48,7 +48,7 @@ session_start();
           </div>
         </div>
         <div class="header_bottom">
-          <div class="header_bottom_left"><a class="logo" href="index.html">Droid<strong>4App</strong> <span>A Pro Magazine Template</span></a></div>
+          <div class="header_bottom_left"><a class="logo" href="index.html">Droid<strong>4App</strong> <span>Review applications </span></a></div>
           <div class="header_bottom_right"><a href="#"><img src="images/addbanner_728x90_V1.jpg" alt=""></a></div>
         </div>
       </div>

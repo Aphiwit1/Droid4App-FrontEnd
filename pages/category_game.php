@@ -44,7 +44,7 @@
           </div>
         </div>
         <div class="header_bottom">
-          <div class="header_bottom_left"><a class="logo" href="../index.php">Droid<strong>4app</strong> <span>A Pro Magazine Template</span></a></div>
+          <div class="header_bottom_left"><a class="logo" href="../index.php">Droid<strong>4app</strong> <span>Review applications</span></a></div>
           <div class="header_bottom_right"><a href="#"><img src="../images/addbanner_728x90_V1.jpg" alt=""></a></div>
         </div>
       </div>
@@ -171,7 +171,7 @@
                    echo"<li>";
                    echo   "<div class'media wow fadeInDown'> <a class='media-left' href=''> <img src='../images/".$row['post_img']."' alt=''> </a>";
                    echo     "<div class='media-body'>";
-                   echo     "<h4 class='media-heading'><a href=''>".$row['post_name']."</a></h4>";
+                   echo     "<h4 class='media-heading'><a href='pages/single.php?id=".$row['post_id']."'>".$row['post_name']."</a></h4>";
                    //echo       "<p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>";
                    echo     "</div>";
                    echo "</div>";
