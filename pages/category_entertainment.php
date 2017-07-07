@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>magExpress | Pages | Archive 1</title>
+<title>magExpress | Pages | Archive 3</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="../assets/css/theme.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 <link href="https://fonts.googleapis.com/css?family=Kanit|Raleway" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+
 <!--[if lt IE 9]>
 <script src="../assets/js/html5shiv.min.js"></script>
 <script src="../assets/js/respond.min.js"></script>
@@ -29,21 +30,16 @@
         <div class="header_top">
           <div class="header_top_left">
             <ul class="top_nav">
-              <li><a href="../index.html">Home</a></li>
+              <li><a href="../index.php">Home</a></li>
               <li><a href="page.html">About</a></li>
               <li><a href="contact.html">Contact</a></li>
-              <li><a href="404.html">Error Page</a></li>
+            
             </ul>
           </div>
-          <div class="header_top_right">
-            <form action="#" class="search_form">
-              <input type="text" placeholder="Text to Search">
-              <input type="submit" value="">
-            </form>
-          </div>
+
         </div>
         <div class="header_bottom">
-          <div class="header_bottom_left"><a class="logo" href="../index.html">Droid<strong>4app</strong> <span>A Pro Magazine Template</span></a></div>
+          <div class="header_bottom_left"><a class="logo" href="../index.html">Droid<strong>4apps</strong> <span>Review applications</span></a></div>
           <div class="header_bottom_right"><a href="#"><img src="../images/addbanner_728x90_V1.jpg" alt=""></a></div>
         </div>
       </div>
@@ -69,60 +65,42 @@
       </div>
     </nav>
   </div>
+  <section id="mainContent">
+
     <div class="content_bottom">
       <div class="col-lg-8 col-md-8">
         <div class="content_bottom_left">
           <div class="single_category wow fadeInDown">
             <div class="archive_style_1">
-              <h2>
-                <span class="bold_lineอ"><span></span></span> <span class="solid_lineอ"></span> <span class="title_text">
-                <?php
-                  require "../dbconnect.php";
-                  session_start();
-                  $sql = "SELECT * FROM data_post WHERE post_type = 3 ORDER BY post_id DESC";
-                  $query = mysqli_query($DBConect,$sql);
-                  $sql_num = mysqli_num_rows($query);
-                  if (!empty($_SESSION['user'])) {
-                    # code...
-                    echo "จำนวนบทความ : ".$sql_num;
+              <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <span class="title_text">Latest Updates</span> </h2>
 
-                  }
-                 ?>
-                </span>
-              </h2>
 
-          <?php
-            require "../dbconnect.php";
-            $sql = "SELECT * FROM data_post WHERE post_type = 3 ORDER BY post_id DESC";
-            $query = mysqli_query($DBConect,$sql);
 
-            while ($row = mysqli_fetch_array($query,MYSQLI_ASSOC)) {
-              $post_id = $row['post_id'];
-              $post_name = $row['post_name'];
-              $post_img = $row['post_img'];
-              $post_bt = $row['post_by'];
-              $post_day = $row['post_day'];
-              $post_month = $row['post_month'];
-              $post_year = $row['post_year'];
-              $post_view = $row['post_view'];
 
-              echo  "<div class='business_category_left wow fadeInDown'>";
-              echo "<ul class='fashion_catgnav'>";
-              echo "<li>";
-              echo "<div class='catgimg2_container'> <a href='single.php?id=".$post_id."'><img src='../images/".$post_img."'></a> </div>";
-              echo "<h2 class='catg_titile'><a href='single.php?id=".$post_id."'>".$post_name."</a></h2>";
-              echo "<div class='comments_box'> <span class='meta_date'>".$post_day."/".$post_month."/".$post_year."</span> <span class='meta_comment'><a href='../index.php'>No Comments</a></span> <span class='meta_more'><a  href=''../single.php?id=".$post_id."'>Read More...</a></span> </div>";
-              echo "<p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla...</p>";
-              echo "</li>";
-              echo "</ul>";
-              echo  "</div>";
+              <?php
+              require "../dbconnect.php";
+              $sql = "SELECT * FROM data_post WHERE post_type = 3 ORDER BY post_id DESC";
+              $query = mysqli_query($DBConect,$sql);
+
+              while ($row = mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+                $post_id = $row['post_id'];
+                $post_name = $row['post_name'];
+                $post_img = $row['post_img'];
+                $post_bt = $row['post_by'];
+                $post_day = $row['post_day'];
+                $post_month = $row['post_month'];
+                $post_year = $row['post_year'];
+                $post_view = $row['post_view'];
+
+              echo "<div class='single_archive wow fadeInDown'>";
+              echo  "<div class='archive_imgcontainer'><img src='../images/".$post_img."' alt=''> </div>";
+              echo  "<div class='archive_caption'>";
+              echo    "<h2><a href='single.php?id=".$post_id."'>".$post_name."</a></h2>";
+              echo    "<p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris.</p>";
+              echo "</div>";
+              echo  "<a class='read_more' href='single.php?id=".$post_id."'><span>Read More</span></a> </div>";
             }
-           ?>
-
-
-
-
-
+                ?>
             </div>
           </div>
         </div>
@@ -143,10 +121,6 @@
       <div class="col-lg-4 col-md-4">
         <div class="content_bottom_right">
 
-
-
-
-
           <div class="single_bottom_rightbar">
             <ul role="tablist" class="nav nav-tabs custom-tabs">
               <li class="active" role="presentation"><a data-toggle="tab" role="tab" aria-controls="home" href="#mostPopular">Most Popular</a></li>
@@ -156,30 +130,27 @@
               <div id="mostPopular" class="tab-pane fade in active" role="tabpanel">
                 <ul class="small_catg popular_catg wow fadeInDown">
 
-
-                 <?php
-                 require "../dbconnect.php";
-
+                  <?php
+                  require "../dbconnect.php";
 
 
-                 $sql = "SELECT * FROM data_post WHERE post_type = 3 ORDER BY post_view  DESC LIMIT 5";
-                 $query = mysqli_query($DBConect,$sql);
 
-                 while ($row = mysqli_fetch_array($query,MYSQLI_ASSOC)) {
-                   echo"<li>";
-                   echo   "<div class'media wow fadeInDown'> <a class='media-left' href=''> <img src='../images/".$row['post_img']."' alt=''> </a>";
-                   echo     "<div class='media-body'>";
-                   echo     "<h4 class='media-heading'><a href=''>".$row['post_name']."</a></h4>";
-                   //echo       "<p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>";
-                   echo     "</div>";
-                   echo "</div>";
-                   echo"</li>";
+                  $sql = "SELECT * FROM data_post WHERE post_type = 3 ORDER BY post_view  DESC LIMIT 5";
+                  $query = mysqli_query($DBConect,$sql);
 
-                 }
+                  while ($row = mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+                    echo"<li>";
+                    echo   "<div class'media wow fadeInDown'> <a class='media-left' href=''> <img src='../images/".$row['post_img']."' alt=''> </a>";
+                    echo     "<div class='media-body'>";
+                    echo     "<h4 class='media-heading'><a href=''>".$row['post_name']."</a></h4>";
+                    echo       "<p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>";
+                    echo     "</div>";
+                    echo "</div>";
+                    echo"</li>";
 
-                  ?>
+                  }
 
-
+                   ?>
                 </ul>
               </div>
               <div id="recentComent" class="tab-pane fade" role="tabpanel">
@@ -210,32 +181,32 @@
                   </li>
                 </ul>
               </div>
+              <?php
+
+              require "../dbconnect.php";
+              if (!empty($_SESSION['user'])) { //ถ้าเป็น Admin จะแสดง form เพิ่มข่าว
+                # code...
+                echo "<h2>เพิ่มข้อมูล ( Admin )</h2>";
+                echo "<form action='post_insert.php' method='POST' enctype='multipart/form-data'>";
+                echo  "<input type='text' name='post' placeholder=' Header' class='form-control'> <br><br>";
+                echo  "<input type='file' class='custom-file-input' name='news_img'><br>";
+                echo  "<select name='type'>";
+                echo    "<option value='g'>เกม</option>";
+                echo    "<option value='p'>รูปภาพและวิดิโอ</option>";
+                echo    "<option value='en'>บันเทิง</option>";
+                echo    "<option value='edu'>การศึกษา</option>";
+                echo    "<option value='o'>อื่นๆ</option>";
+                echo    "<option value='an'>มือถือ android</option>";
+                echo  "</select><br><br>";
+                echo  "<input type='submit' value='เพิ่ม' class='btn btn-default'>";
+                echo"</form>";
+              }
+
+              ?>
             </div>
           </div>
-          <div class="single_bottom_rightbar">
-            <?php
 
-            require "../dbconnect.php";
-            if (!empty($_SESSION['user'])) { //ถ้าเป็น Admin จะแสดง form เพิ่มข่าว
-              # code...
-              echo "<h2>เพิ่มข้อมูล ( Admin )</h2>";
-              echo "<form action='post_insert.php' method='POST' enctype='multipart/form-data'>";
-              echo  "<input type='text' name='post' placeholder=' Header' class='form-control'> <br><br>";
-              echo  "<input type='file' class='custom-file-input' name='news_img'><br>";
-              echo  "<select name='type'>";
-              echo    "<option value='g'>เกม</option>";
-              echo    "<option value='p'>รูปภาพและวิดิโอ</option>";
-              echo    "<option value='en'>บันเทิง</option>";
-              echo    "<option value='edu'>การศึกษา</option>";
-              echo    "<option value='o'>อื่นๆ</option>";
-              echo    "<option value='an'>มือถือ android</option>";
-              echo  "</select><br><br>";
-              echo  "<input type='submit' value='เพิ่ม' class='btn btn-default'>";
-              echo"</form>";
-            }
 
-            ?>
-          </div>
         </div>
       </div>
     </div>
@@ -245,42 +216,15 @@
   <div class="footer_top">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-4">
-          <div class="single_footer_top wow fadeInLeft">
-            <h2>Flicker Images</h2>
-            <ul class="flicker_nav">
-              <li> <a href="#"><img src="../images/75x75.jpg" alt=""></a> </li>
-              <li> <a href="#"><img src="../images/75x75.jpg" alt=""></a> </li>
-              <li> <a href="#"><img src="../images/75x75.jpg" alt=""></a> </li>
-              <li> <a href="#"><img src="../images/75x75.jpg" alt=""></a> </li>
-              <li> <a href="#"><img src="../images/75x75.jpg" alt=""></a> </li>
-              <li> <a href="#"><img src="../images/75x75.jpg" alt=""></a> </li>
-              <li> <a href="#"><img src="../images/75x75.jpg" alt=""></a> </li>
-              <li> <a href="#"><img src="../images/75x75.jpg" alt=""></a> </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4">
-          <div class="single_footer_top wow fadeInDown">
-            <h2>Labels</h2>
-            <ul class="labels_nav">
-              <li><a href="#">Gallery</a></li>
-              <li><a href="#">Business</a></li>
-              <li><a href="#">Games</a></li>
-              <li><a href="#">Fashion</a></li>
-              <li><a href="#">Sports</a></li>
-              <li><a href="#">Technology</a></li>
-              <li><a href="#">Slider</a></li>
-              <li><a href="#">Life &amp; Style</a></li>
-            </ul>
-          </div>
-        </div>
+
+
         <div class="col-lg-4 col-md-4 col-sm-4">
           <div class="single_footer_top wow fadeInRight">
             <h2>About Us</h2>
-            <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed nec laoreet orci, eget ullamcorper quam. Phasellus lorem neque, </p>
+            <p>Hello everyone , we are students .This website create for practice programming skills.  </p>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -289,7 +233,7 @@
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
           <div class="footer_bottom_left">
-            <p>Copyright &copy; 2045 <a href="../index.html">magExpress</a></p>
+            <p>Copyright &copy; 2045 <a href="index.html">magExpress</a></p>
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -300,6 +244,7 @@
       </div>
     </div>
   </div>
+
 </footer>
 <script src="../assets/js/jquery.min.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>

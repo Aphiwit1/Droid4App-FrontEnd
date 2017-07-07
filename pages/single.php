@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>magExpress | Pages | Single</title>
+<title><?php
+echo "string";
+//echo $_SESSION['head_name'];
+ ?></title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,11 +19,21 @@
 <script src="../assets/js/html5shiv.min.js"></script>
 <script src="../assets/js/respond.min.js"></script>
 <![endif]-->
-</head>
-<body>
 <?php
 session_start();
- ?>
+require "../dbconnect.php";
+$id = $_GET['id'];
+$sql = "SELECT * FROM data_post WHERE post_id = '$id' ";
+$query = mysqli_query($DBConect,$sql);
+$row = mysqli_fetch_assoc($query);
+$head = $row['post_name'];
+echo "<meta property='og:title'  content='".$head."' />";
+
+?>
+
+
+</head>
+
 <div id="preloader">
   <div id="status">&nbsp;</div>
 </div>
@@ -35,7 +48,7 @@ session_start();
               <li><a href="../index.html">Home</a></li>
               <li><a href="page.html">About</a></li>
               <li><a href="contact.html">Contact</a></li>
-              <li><a href="404.html">Error Page</a></li>
+            
             </ul>
           </div>
           <div class="header_top_right">
@@ -46,7 +59,7 @@ session_start();
           </div>
         </div>
         <div class="header_bottom">
-          <div class="header_bottom_left"><a class="logo" href="../index.html">Droid<strong>4app</strong> <span>A Pro Magazine Template</span></a></div>
+          <div class="header_bottom_left"><a class="logo" href="../index.html">Droid<strong>4app</strong> <span>Review applications</span></a></div>
           <div class="header_bottom_right"><a href="#"><img src="../images/addbanner_728x90_V1.jpg" alt=""></a></div>
         </div>
       </div>
@@ -195,18 +208,46 @@ session_start();
 
               ?>
 
+
+
+              <?php
+              require '../dbconnect.php'; //share facebook
+              echo "<div class='fb-share-button' data-href='http://www.droid4apps.com/pages/single.php?id=".$_GET['id']."' data-layout='button_count' data-size='large' data-mobile-iframe='true'><a class='fb-xfbml-parse-ignore' target='_blank' href='https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.droid4apps.com%2Fpages%2Fsingle.php%3Fid%3D595bb8df84f19&amp;src=sdkpreparse'>แชร์</a></div>";
+              //echo $_SESSION['head_name'];
+              ?>
+
+              <?php //comment facebook ?>
+              <div id="fb-root"></div>
+              <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v2.9&appId=270091693468130";
+                fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));</script>
+
+              <?php //comment facebook
+
+              echo "<div class='fb-comments' data-href='http://www.droid4apps.com/pages/single.php?id=".$_GET['id']."' data-width='100%' data-numposts='5'></div>";
+              ?>
+
+
+
+
             </div>
           </div>
         </div>
-        <div class="post_pagination">
-          <div class="prev"> <a class="angle_left" href="#"><i class="fa fa-angle-double-left"></i></a>
-            <div class="pagincontent"> <span>Previous Post</span> <a href="#">Aliquam quam orci in molestie a tempor nec</a> </div>
-          </div>
-          <div class="next">
-            <div class="pagincontent"> <span>Next Post</span> <a href="#">Aliquam quam orci in molestie a tempor nec</a> </div>
-            <a class="angle_right" href="#"><i class="fa fa-angle-double-right"></i></a> </div>
-        </div>
-        <div class="share_post"> <a class="facebook" href="#"><i class="fa fa-facebook"></i>Facebook</a> <a class="twitter" href="#"><i class="fa fa-twitter"></i>Twitter</a> <a class="googleplus" href="#"><i class="fa fa-google-plus"></i>Google+</a> <a class="linkedin" href="#"><i class="fa fa-linkedin"></i>LinkedIn</a> <a class="stumbleupon" href="#"><i class="fa fa-stumbleupon"></i>StumbleUpon</a> <a class="pinterest" href="#"><i class="fa fa-pinterest"></i>Pinterest</a> </div>
+
+
+
+
+
+
+
+
+
+
+
         <div class="similar_post">
           <h2>Similar Post You May Like <i class="fa fa-thumbs-o-up"></i></h2>
           <ul class="small_catg similar_nav wow fadeInDown animated">
@@ -263,6 +304,7 @@ session_start();
                   echo  "</div>";
                   echo "</li>";}
                   ?>
+
                 </ul>
               </div>
               <div id="recentComent" class="tab-pane fade" role="tabpanel">
@@ -294,27 +336,6 @@ session_start();
                 </ul>
               </div>
             </div>
-          </div>
-          <div class="single_bottom_rightbar">
-            <h2>Blog Archive</h2>
-            <div class="blog_archive wow fadeInDown">
-              <form action="#">
-                <select>
-                  <option value="">Blog Archive</option>
-                  <option value="">October(20)</option>
-                </select>
-              </form>
-            </div>
-          </div>
-          <div class="single_bottom_rightbar wow fadeInDown">
-            <h2>Popular Lnks</h2>
-            <ul>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Blog Home</a></li>
-              <li><a href="#">Error Page</a></li>
-              <li><a href="#">Social link</a></li>
-              <li><a href="#">Login</a></li>
-            </ul>
           </div>
         </div>
       </div>
@@ -358,7 +379,7 @@ session_start();
         <div class="col-lg-4 col-md-4 col-sm-4">
           <div class="single_footer_top wow fadeInRight">
             <h2>About Us</h2>
-            <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed nec laoreet orci, eget ullamcorper quam. Phasellus lorem neque, </p>
+            <p>Hello everyone , we are students .This website create for practice programming skills.</p>
           </div>
         </div>
       </div>

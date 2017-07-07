@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Droid4app</title>
+<title>Droid4apps</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,8 +16,20 @@
 <script src="assets/js/html5shiv.min.js"></script>
 <script src="assets/js/respond.min.js"></script>
 <![endif]-->
+<meta property="fb:app_id"          content="1234567890" />
+<meta property="og:type"            content="article" />
+<meta property="og:url"             content="http://newsblog.org/news/136756249803614" />
+<meta property="og:title"           content="sIntroducing our New Site" />
+<meta property="og:image"           content="https://scontent-sea1-1.xx.fbcdn.net/hphotos-xap1/t39.2178-6/851565_496755187057665_544240989_n.jpg" />
+<meta property="og:description"    content="http://samples.ogp.me/390580850990722" />
+
 </head>
 <body>
+
+
+
+
+
 <?php
 require "dbconnect.php";
 session_start();
@@ -37,7 +49,7 @@ session_start();
               <li><a href="index.html">Home</a></li>
               <li><a href="pages/page.html">About</a></li>
               <li><a href="pages/contact.html">Contact</a></li>
-              <li><a href="pages/404.html">Error Page</a></li>
+
             </ul>
           </div>
           <div class="header_top_right">
@@ -48,7 +60,7 @@ session_start();
           </div>
         </div>
         <div class="header_bottom">
-          <div class="header_bottom_left"><a class="logo" href="index.html">Droid<strong>4App</strong> <span>A Pro Magazine Template</span></a></div>
+          <div class="header_bottom_left"><a class="logo" href="index.html">Droid<strong>4Apps</strong> <span>Review applications</span></a></div>
           <div class="header_bottom_right"><a href="#"><img src="images/addbanner_728x90_V1.jpg" alt=""></a></div>
         </div>
       </div>
@@ -411,6 +423,7 @@ session_start();
                   $row = mysqli_fetch_assoc($query);
 
                   $post_id = $row['post_id'];
+
                   $sql_detail = "SELECT * FROM data_detailpost WHERE post_id = '$post_id'  LIMIT 1 ";
                   $query_detail = mysqli_query($DBConect,$sql_detail);
                   $row_detail = mysqli_fetch_assoc($query_detail);
@@ -455,67 +468,42 @@ session_start();
       </div>
       <div class="col-lg-4 col-md-4">
         <div class="content_bottom_right">
-          <div class="single_bottom_rightbar">
-            <h2>Recent Post</h2>
-            <ul class="small_catg popular_catg wow fadeInDown">
-              <li>
-                <div class="media wow fadeInDown"> <a href="#" class="media-left"><img alt="" src="images/112x112.jpg"> </a>
-                  <div class="media-body">
-                    <h4 class="media-heading"><a href="#">งานวิจัย GSMA ชี้จีนจะเป็นตลาด 5G ที่ใหญ่ที่สุดภายในปี 2025 </a></h4>
-                    <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="media wow fadeInDown"> <a href="#" class="media-left"><img alt="" src="images/112x112.jpg"> </a>
-                  <div class="media-body">
-                    <h4 class="media-heading"><a href="#">งานวิจัย GSMA ชี้จีนจะเป็นตลาด 5G ที่ใหญ่ที่สุดภายในปี 2025 </a></h4>
-                    <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="media wow fadeInDown"> <a href="#" class="media-left"><img alt="" src="images/112x112.jpg"> </a>
-                  <div class="media-body">
-                    <h4 class="media-heading"><a href="#">งานวิจัย GSMA ชี้จีนจะเป็นตลาด 5G ที่ใหญ่ที่สุดภายในปี 2025</a></h4>
-                    <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
+
           <div class="single_bottom_rightbar">
             <ul role="tablist" class="nav nav-tabs custom-tabs">
-              <li class="active" role="presentation"><a data-toggle="tab" role="tab" aria-controls="home" href="#mostPopular">Most Popular</a></li>
-              <li role="presentation"><a data-toggle="tab" role="tab" aria-controls="messages" href="#recentComent">Recent Comment</a></li>
+              <li class="active" role="presentation"><a data-toggle="tab" role="tab" aria-controls="home" href="#mostPopular">Popular</a></li>
+              <li role="presentation"><a data-toggle="tab" role="tab" aria-controls="messages" href="#recentComent">ล่าสุด</a></li>
             </ul>
             <div class="tab-content">
               <div id="mostPopular" class="tab-pane fade in active" role="tabpanel">
                 <ul class="small_catg popular_catg wow fadeInDown">
-                  <li>
-                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">งานวิจัย GSMA ชี้จีนจะเป็นตลาด 5G ที่ใหญ่ที่สุดภายในปี 2025</a></h4>
-                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">งานวิจัย GSMA ชี้จีนจะเป็นตลาด 5G ที่ใหญ่ที่สุดภายในปี 2025</a></h4>
-                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">งานวิจัย GSMA ชี้จีนจะเป็นตลาด 5G ที่ใหญ่ที่สุดภายในปี 2025</a></h4>
-                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                      </div>
-                    </div>
-                  </li>
+
+                <?php
+                // แสดง poppular
+                require "dbconnect.php";
+                $sql = "SELECT * FROM data_post  ORDER BY post_view DESC LIMIT 0,10";
+                $query = mysqli_query($DBConect,$sql);
+
+
+                while ($row = mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+
+                  $post_id = $row['post_id'];
+
+                  $sql_detail = "SELECT * FROM data_detailpost WHERE post_id = '$post_id'";
+                  $query_detail = mysqli_query($DBConect,$sql_detail);
+                  $row_detail = mysqli_fetch_assoc($query_detail);
+
+                  $detail_substr = iconv_substr($row_detail['detailpost_detail'],0,112,"UTF-8")." ...";
+
+                  echo "<li>";
+                  echo  "<div class='media wow fadeInDown'> <a class='media-left' href=''><img src='images/".$row['post_img']."' alt=''></a>";
+                  echo    "<div class='media-body'>";
+                  echo      "<h4 class='media-heading'><a href='single.php?id=".$row['post_id']."'>".$row['post_name']."</a></h4>";
+                  echo      "<p>".$detail_substr."</p>";
+                  echo    "</div>";
+                  echo  "</div>";
+                  echo "</li>"; }
+                ?>
                 </ul>
               </div>
               <div id="recentComent" class="tab-pane fade" role="tabpanel">
@@ -548,27 +536,8 @@ session_start();
               </div>
             </div>
           </div>
-          <div class="single_bottom_rightbar">
-            <h2>Blog Archive</h2>
-            <div class="blog_archive wow fadeInDown">
-              <form action="#">
-                <select>
-                  <option value="">Blog Archive</option>
-                  <option value="">October(20)</option>
-                </select>
-              </form>
-            </div>
-          </div>
-          <div class="single_bottom_rightbar wow fadeInDown">
-            <h2>Popular Lnks</h2>
-            <ul>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Blog Home</a></li>
-              <li><a href="#">Error Page</a></li>
-              <li><a href="#">Social link</a></li>
-              <li><a href="#">Login</a></li>
-            </ul>
-          </div>
+
+
         </div>
       </div>
     </div>
@@ -578,42 +547,15 @@ session_start();
   <div class="footer_top">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-4">
-          <div class="single_footer_top wow fadeInLeft">
-            <h2>Flicker Images</h2>
-            <ul class="flicker_nav">
-              <li><a href="#"><img src="images/75x75.jpg" alt=""></a></li>
-              <li><a href="#"><img src="images/75x75.jpg" alt=""></a></li>
-              <li><a href="#"><img src="images/75x75.jpg" alt=""></a></li>
-              <li><a href="#"><img src="images/75x75.jpg" alt=""></a></li>
-              <li><a href="#"><img src="images/75x75.jpg" alt=""></a></li>
-              <li><a href="#"><img src="images/75x75.jpg" alt=""></a></li>
-              <li><a href="#"><img src="images/75x75.jpg" alt=""></a></li>
-              <li><a href="#"><img src="images/75x75.jpg" alt=""></a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4">
-          <div class="single_footer_top wow fadeInDown">
-            <h2>Labels</h2>
-            <ul class="labels_nav">
-              <li><a href="#">Gallery</a></li>
-              <li><a href="#">Business</a></li>
-              <li><a href="#">Games</a></li>
-              <li><a href="#">Fashion</a></li>
-              <li><a href="#">Sports</a></li>
-              <li><a href="#">Technology</a></li>
-              <li><a href="#">Slider</a></li>
-              <li><a href="#">Life &amp; Style</a></li>
-            </ul>
-          </div>
-        </div>
+
+
         <div class="col-lg-4 col-md-4 col-sm-4">
           <div class="single_footer_top wow fadeInRight">
             <h2>About Us</h2>
-            <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed nec laoreet orci, eget ullamcorper quam. Phasellus lorem neque, </p>
+            <p>Hello everyone , we are students .This website create for practice programming skills.  </p>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -633,6 +575,7 @@ session_start();
       </div>
     </div>
   </div>
+
 </footer>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
