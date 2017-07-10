@@ -2,7 +2,14 @@
 <html>
 <head>
 <title><?php
-echo "string";
+session_start();
+require "../dbconnect.php";
+$id = $_GET['id'];
+$sql = "SELECT * FROM data_post WHERE post_id = '$id' ";
+$query = mysqli_query($DBConect,$sql);
+$row = mysqli_fetch_assoc($query);
+$head = $row['post_name'];
+echo $head;
 //echo $_SESSION['head_name'];
  ?></title>
 <meta charset="utf-8">
@@ -20,7 +27,7 @@ echo "string";
 <script src="../assets/js/respond.min.js"></script>
 <![endif]-->
 <?php
-session_start();
+
 require "../dbconnect.php";
 $id = $_GET['id'];
 $sql = "SELECT * FROM data_post WHERE post_id = '$id' ";
@@ -33,7 +40,21 @@ echo "<meta property='og:title'  content='".$head."' />";
 
 
 </head>
+<body>
+<?php //เพิ่ม view
 
+ require "../dbconnect.php";
+ $id = $_GET['id'];
+ $sql = "SELECT * FROM data_post WHERE post_id = '$id' ";
+ $query = mysqli_query($DBConect,$sql);
+ $row = mysqli_fetch_assoc($query);
+ $view = $row['post_view']+1;
+
+ $sql_update ="UPDATE data_post SET post_view = '$view'  WHERE post_id =  '$id' " or die (mysql_error());
+ $resulti = mysqli_query($DBConect, $sql_update, MYSQLI_USE_RESULT) or die(mysql_error());
+ //echo $view;
+
+ ?>
 <div id="preloader">
   <div id="status">&nbsp;</div>
 </div>
@@ -48,7 +69,7 @@ echo "<meta property='og:title'  content='".$head."' />";
               <li><a href="../index.html">Home</a></li>
               <li><a href="page.html">About</a></li>
               <li><a href="contact.html">Contact</a></li>
-            
+
             </ul>
           </div>
           <div class="header_top_right">
@@ -59,7 +80,7 @@ echo "<meta property='og:title'  content='".$head."' />";
           </div>
         </div>
         <div class="header_bottom">
-          <div class="header_bottom_left"><a class="logo" href="../index.html">Droid<strong>4app</strong> <span>Review applications</span></a></div>
+          <div class="header_bottom_left"><a class="logo" href="index.php">Droid<strong>4Apps</strong> <span>คิดถึง App คิดถึง Droid4apps</span></a></div>
           <div class="header_bottom_right"><a href="#"><img src="../images/addbanner_728x90_V1.jpg" alt=""></a></div>
         </div>
       </div>
@@ -86,12 +107,12 @@ echo "<meta property='og:title'  content='".$head."' />";
             <li><a href="contact.html">Contact</a></li>
             <li><a href="404.html">404 page</a></li>-->
             <li class=""><a href="../index.php">หน้าแรก</a></li>
-            <li><a href="category_game.php">เกม</a></li>
-            <li><a href="category_photo.php">รูปภาพและวิดิโอ</a></li>
-            <li><a href="category_photo.php">บันเทิง</a></li>
-            <li><a href="category_education.php">การศึกษา</a></li>
-            <li><a href="category_newsAndroid.php">มือถือแอนดรอยด์</a></li>
-              <li><a href="category_other.php">อื่นๆ</a></li>
+            <li><a href="category_game.php?page=1">เกม</a></li>
+            <li><a href="category_photo.php?page=1">รูปภาพและวิดิโอ</a></li>
+            <li><a href="category_entertainment.php?page=1">บันเทิง</a></li>
+            <li><a href="category_education.php?page=1">การศึกษา</a></li>
+            <li><a href="category_newsAndroid.php?page=1">มือถือแอนดรอยด์</a></li>
+              <li><a href="category_other.php?page=1">อื่นๆ</a></li>
 
           </ul>
         </div>
@@ -103,11 +124,7 @@ echo "<meta property='og:title'  content='".$head."' />";
       <div class="col-lg-8 col-md-8">
         <div class="content_bottom_left">
           <div class="single_page_area">
-            <ol class="breadcrumb">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Technology</a></li>
-              <li class="active">Duis quis erat non nunc fringilla </li>
-            </ol>
+
             <h2 class="post_titile">
               <?php //หัวข้อข่าว
                 require "../dbconnect.php";
@@ -122,27 +139,27 @@ echo "<meta property='og:title'  content='".$head."' />";
                 $post_type = $row['post_type'];
 
                 if ($post_type==1) {
-                  $href = "category_game.php";
+                  $href = "category_game.php?page=1";
                   $tag = "เกม";
                 }
                 if ($post_type==2) {
-                  $href = "category_photo.php";
+                  $href = "category_photo.php?page=1";
                   $tag = "รูปภาพและวิดิโอ";
                 }
                 if ($post_type==3) {
-                  $href = "category_entertrain.php";
+                  $href = "category_entertrain.php?page=1";
                   $tag = "บันเทิง";
                 }
                 if ($post_type==4) {
-                  $href = "category_education.php";
+                  $href = "category_education.php?page=1";
                   $tag = "การศึกษา";
                 }
                 if ($post_type==5) {
-                  $href = "category_other.php";
+                  $href = "category_other.php?page=1";
                   $tag = "อื่นๆ";
                 }
                 if ($post_type==6) {
-                  $href = "category_android.php";
+                  $href = "category_android.php?page=1";
                   $tag = "มือถือแอนดรอยด์";
                 }
                 echo "</h2>";
@@ -248,35 +265,7 @@ echo "<meta property='og:title'  content='".$head."' />";
 
 
 
-        <div class="similar_post">
-          <h2>Similar Post You May Like <i class="fa fa-thumbs-o-up"></i></h2>
-          <ul class="small_catg similar_nav wow fadeInDown animated">
-            <li>
-              <div class="media wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"> <a class="media-left related-img" href="#"><img src="../images/112x112.jpg" alt=""></a>
-                <div class="media-body">
-                  <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                  <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="media wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"> <a class="media-left related-img" href="#"><img src="../images/112x112.jpg" alt=""></a>
-                <div class="media-body">
-                  <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                  <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="media wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"> <a class="media-left related-img" href="#"><img src="../images/112x112.jpg" alt=""></a>
-                <div class="media-body">
-                  <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                  <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
+
       </div>
       <div class="col-lg-4 col-md-4">
         <div class="content_bottom_right">
@@ -291,15 +280,25 @@ echo "<meta property='og:title'  content='".$head."' />";
                 <ul class="small_catg popular_catg wow fadeInDown">
                   <?php
 
-                  $sql = "SELECT * FROM data_post WHERE post_type = 1 ORDER BY post_view  DESC LIMIT 5";
+                  $sql = "SELECT * FROM data_post  ORDER BY post_view  DESC LIMIT 5";
                   $query = mysqli_query($DBConect,$sql);
 
                   while ($row = mysqli_fetch_array($query,MYSQLI_ASSOC)){
+
+
+                    $post_id = $row['post_id'];
+
+                    $sql_detail = "SELECT * FROM data_detailpost WHERE post_id = '$post_id'";
+                    $query_detail = mysqli_query($DBConect,$sql_detail);
+                    $row_detail = mysqli_fetch_assoc($query_detail);
+
+                    $detail_substr = iconv_substr($row_detail['detailpost_detail'],0,112,"UTF-8")." ...";
+
                   echo "<li>";
-                  echo  "<div class='media wow fadeInDown'> <a class='media-left' href=''><img src='../images/112x112.jpg' alt=''></a>";
+                  echo  "<div class='media wow fadeInDown'> <a class='media-left' href=''><img src='../images/".$row['post_img']."' alt=''></a>";
                   echo    "<div class='media-body'>";
-                  echo      "<h4 class='media-heading'><a href=''>Duis condimentum nunc pretium lobortis </a></h4>";
-                  echo      "<p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>";
+                  echo      "<h4 class='media-heading'><a href='../pages/single.php?id=".$row['post_id']."'>".$row['post_name']."</a></h4>";
+                  echo      "<p>".$detail_substr."</p>";
                   echo    "</div>";
                   echo  "</div>";
                   echo "</li>";}
@@ -309,30 +308,34 @@ echo "<meta property='og:title'  content='".$head."' />";
               </div>
               <div id="recentComent" class="tab-pane fade" role="tabpanel">
                 <ul class="small_catg popular_catg">
-                  <li>
-                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="../images/112x112.jpg" alt=""></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="../images/112x112.jpg" alt=""></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="../images/112x112.jpg" alt=""></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                      </div>
-                    </div>
-                  </li>
+
+                  <?php
+                  require "../dbconnect.php";
+                  $sql = "SELECT * FROM data_post  ORDER BY post_id DESC";
+                  $query = mysqli_query($DBConect,$sql);
+
+                  while ($row = mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+
+                    //$_SESSION['head_name'] = $row['post_name'];
+                    $post_id = $row['post_id'];
+
+                    $sql_detail = "SELECT * FROM data_detailpost WHERE post_id = '$post_id'";
+                    $query_detail = mysqli_query($DBConect,$sql_detail);
+                    $row_detail = mysqli_fetch_assoc($query_detail);
+
+                    $detail_substr = iconv_substr($row_detail['detailpost_detail'],0,112,"UTF-8")." ...";
+
+                echo  "<li>";
+                echo    "<div class='media wow fadeInDown'> <a class='media-left' href=''><img src='../images/".$row['post_img']."' alt=''></a>";
+                echo      "<div class='media-body'>";
+                echo        "<h4 class='media-heading'><a href=''>".$row['post_name']."</a></h4>";
+                echo        "<p>".$detail_substr."</p>";
+                echo      "</div>";
+                echo    "</div>";
+                echo  "</li>";
+                }
+                  ?>
+
                 </ul>
               </div>
             </div>
@@ -346,42 +349,15 @@ echo "<meta property='og:title'  content='".$head."' />";
   <div class="footer_top">
     <div class="container">
       <div class="row">
-        <!--<div class="col-lg-4 col-md-4 col-sm-4">
-          <div class="single_footer_top wow fadeInLeft">
-            <h2>Flicker Images</h2>
-            <ul class="flicker_nav">
-              <li> <a href="#"><img src="../images/75x75.jpg" alt=""></a> </li>
-              <li> <a href="#"><img src="../images/75x75.jpg" alt=""></a> </li>
-              <li> <a href="#"><img src="../images/75x75.jpg" alt=""></a> </li>
-              <li> <a href="#"><img src="../images/75x75.jpg" alt=""></a> </li>
-              <li> <a href="#"><img src="../images/75x75.jpg" alt=""></a> </li>
-              <li> <a href="#"><img src="../images/75x75.jpg" alt=""></a> </li>
-              <li> <a href="#"><img src="../images/75x75.jpg" alt=""></a> </li>
-              <li> <a href="#"><img src="../images/75x75.jpg" alt=""></a> </li>
-            </ul>
-          </div>
-        </div>-->
-        <!--<div class="col-lg-4 col-md-4 col-sm-4">
-          <div class="single_footer_top wow fadeInDown">
-            <h2>Labels</h2>
-            <ul class="labels_nav">
-              <li><a href="#">Gallery</a></li>
-              <li><a href="#">Business</a></li>
-              <li><a href="#">Games</a></li>
-              <li><a href="#">Fashion</a></li>
-              <li><a href="#">Sports</a></li>
-              <li><a href="#">Technology</a></li>
-              <li><a href="#">Slider</a></li>
-              <li><a href="#">Life &amp; Style</a></li>
-            </ul>
-          </div>
-        </div>-->
+
+
         <div class="col-lg-4 col-md-4 col-sm-4">
           <div class="single_footer_top wow fadeInRight">
             <h2>About Us</h2>
-            <p>Hello everyone , we are students .This website create for practice programming skills.</p>
+            <p>Hello! We are students.This website create for practice programming skills.</p>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -390,7 +366,7 @@ echo "<meta property='og:title'  content='".$head."' />";
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
           <div class="footer_bottom_left">
-            <p>Copyright &copy; 2045 <a href="../index.html">magExpress</a></p>
+            <p>Copyright &copy; 2045 <a href="index.html">magExpress</a></p>
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

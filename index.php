@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Droid4apps</title>
+<title>Droid4apps | รีวิวแอพพลิเคชัน และมือถือแอนดรอยด์</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -60,7 +60,7 @@ session_start();
           </div>
         </div>
         <div class="header_bottom">
-          <div class="header_bottom_left"><a class="logo" href="index.html">Droid<strong>4Apps</strong> <span>Review applications</span></a></div>
+          <div class="header_bottom_left"><a class="logo" href="index.php">Droid<strong>4Apps</strong> <span>คิดถึง App คิดถึง Droid4apps</span></a></div>
           <div class="header_bottom_right"><a href="#"><img src="images/addbanner_728x90_V1.jpg" alt=""></a></div>
         </div>
       </div>
@@ -75,7 +75,7 @@ session_start();
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav custom_nav">
             <li class=""><a href="index.php">หน้าแรก</a></li>
-            <li class=""><a href="pages/category_game.php">เกม</a></li>
+            <li class=""><a href="pages/category_game.php?page=1">เกม</a></li>
 
             <!--<li class="dropdown"> <a href="#" class="" data-toggle="dropdown" role="button" aria-expanded="false">เกม</a>
               <ul class="dropdown-menu" role="menu">
@@ -86,11 +86,11 @@ session_start();
                 <li><a href="pages/archive3.html">มือถือ android</a></li>
               </ul>
             </li>-->
-            <li class=""><a href="pages/category_photo.php">รูปภาพและวิดิโอ</a></li>
-            <li class=""><a href="pages/category_entertainment.php">บันเทิง</a></li>
-            <li class=""><a href="pages/category_education.php">การศึกษา</a></li>
-            <li class=""><a href="pages/category_newsAndroid.php">มือถือแอนดรอยด์</a></li>
-            <li class=""><a href="pages/category_other.php">อื่นๆ</a></li>
+            <li class=""><a href="pages/category_photo.php?page=1">รูปภาพและวิดิโอ</a></li>
+            <li class=""><a href="pages/category_entertainment.php?page=1">บันเทิง</a></li>
+            <li class=""><a href="pages/category_education.php?page=1">การศึกษา</a></li>
+            <li class=""><a href="pages/category_newsAndroid.php?page=1">มือถือแอนดรอยด์</a></li>
+            <li class=""><a href="pages/category_other.php?page=1">อื่นๆ</a></li>
 
             <?php
               require "dbconnect.php";
@@ -112,36 +112,37 @@ session_start();
         <div class="col-lg-6 col-md-6 col-sm6">
           <div class="latest_slider">
             <div class="slick_slider">
-              <div class="single_iteam"><img src="images/img_595234b93968b.jpg" alt="">
-                <h2><a class="slider_tittle" href="pages/single.html">Fusce eu nulla semper porttitor felis sit amet</a></h2>
-              </div>
-              <div class="single_iteam"><img src="images/550x330x2.jpg" alt="">
-                <h2><a class="slider_tittle" href="pages/single.html">Fusce eu nulla semper porttitor felis sit amet</a></h2>
-              </div>
-              <div class="single_iteam"><img src="images/550x330x3.jpg" alt="">
-                <h2><a class="slider_tittle" href="pages/single.html">Fusce eu nulla semper porttitor felis sit amet</a></h2>
-              </div>
-              <div class="single_iteam"><img src="images/550x330x4.jpg" alt="">
-                <h2><a class="slider_tittle" href="pages/single.html">Fusce eu nulla semper porttitor felis sit amet</a></h2>
-              </div>
+
+              <?php
+              $sql = "SELECT * FROM data_post WHERE post_type = 7  ORDER BY post_id DESC LIMIT 0,2 ";
+              $query = mysqli_query($DBConect,$sql);
+
+              while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+              echo "<div class='single_iteam'><img src='images/".$row['post_img']."' alt=''>";
+              //echo   "<h2><a class='slider_tittle' href='pages/single.php?id=".$row['post_id']."'>".$row['post_name']."</a></h2>";
+              echo "</div>";
+              }
+              ?>
+
+
             </div>
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm6">
           <div class="content_top_right">
             <ul class="featured_nav wow fadeInDown">
-              <li><img src="images/img_595234b93968b.jpg" alt="">
-                <div class="title_caption"><a href="pages/single.html">Sed luctus semper odio aliquam rhoncus</a></div>
-              </li>
-              <li><img src="images/img_595234b93968b.jpg" alt="">
-                <div class="title_caption"><a href="pages/single.html">Sed luctus semper odio aliquam rhoncus</a></div>
-              </li>
-              <li><img src="images/300x215x3.jpg" alt="">
-                <div class="title_caption"><a href="pages/single.html">Sed luctus semper odio aliquam rhoncus</a></div>
-              </li>
-              <li><img src="images/300x215x4.jpg" alt="">
-                <div class="title_caption"><a href="pages/single.html">Sed luctus semper odio aliquam rhoncus</a></div>
-              </li>
+
+              <?php
+              $sql = "SELECT * FROM data_post WHERE post_type = 7  ORDER BY post_id DESC LIMIT 2,4 ";
+              $query = mysqli_query($DBConect,$sql);
+              while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+
+              echo "<li><img src='images/".$row['post_img']."' alt=''>";
+              echo   "<div class='title_caption'><a href='pages/single.php?id=".$row['post_id']."'>".$row['post_name']."</a></div>";
+              echo "</li>";
+              }
+              ?>
+
             </ul>
           </div>
         </div>
@@ -155,7 +156,7 @@ session_start();
       <div class="col-lg-8 col-md-8">
         <div class="content_bottom_left">
           <div class="single_category wow fadeInDown">
-            <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">เกม</a> </h2>
+            <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="pages/category_game.php?page=1">เกม</a> </h2>
             <?php
               require "dbconnect.php"; //แสดงเกมซ้าย
               $sql = "SELECT * FROM data_post WHERE post_type = 1  ORDER BY post_id DESC LIMIT 1 ";
@@ -208,7 +209,7 @@ session_start();
 
           </div>
           <div class="single_category wow fadeInDown">
-            <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">รูปภาพและวิดิโอ</a> </h2>
+            <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="pages/category_photo.php?page=1">รูปภาพและวิดิโอ</a> </h2>
             <?php
               require "dbconnect.php"; //แสดงรูปภาพและวิดิโอซ้าย
               $sql = "SELECT * FROM data_post WHERE post_type = 2  ORDER BY post_id DESC LIMIT 1 ";
@@ -263,7 +264,7 @@ session_start();
           <div class="games_fashion_area">
             <div class="games_category">
               <div class="single_category">
-                <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">บันเทิง</a> </h2>
+                <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="pages/category_entertainment.php?page=1">บันเทิง</a> </h2>
                 <?php
                 require "dbconnect.php"; //แสดงบันเทิง
                 $sql = "SELECT * FROM data_post WHERE post_type = 3  ORDER BY post_id DESC LIMIT 1 ";
@@ -310,7 +311,7 @@ session_start();
             <div class="fashion_category">
               <div class="single_category">
                 <div class="single_category wow fadeInDown">
-                  <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">การศึกษา</a> </h2>
+                  <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="pages/category_education.php?page=1">การศึกษา</a> </h2>
 
                   <?php
                   require "dbconnect.php"; //แสดงการศึกษา
@@ -366,9 +367,9 @@ session_start();
           <div class="games_fashion_area">
             <div class="games_category">
               <div class="single_category">
-                <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">อื่นๆ</a></a> </h2>
+                <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="pages/category_other.php?page=1">อื่นๆ</a></a> </h2>
                 <?php
-                require "dbconnect.php"; //แสดงบันเทิง
+                require "dbconnect.php"; //แสดงอื่นๆ
                 $sql = "SELECT * FROM data_post WHERE post_type = 5  ORDER BY post_id DESC LIMIT 1 ";
                 $query = mysqli_query($DBConect,$sql);
                 $row = mysqli_fetch_assoc($query);
@@ -413,10 +414,10 @@ session_start();
             <div class="fashion_category">
               <div class="single_category">
                 <div class="single_category wow fadeInDown">
-                  <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">มือถือแอนดรอยด์</a> </h2>
+                  <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="pages/category_newsAndroid.php?page=1">มือถือแอนดรอยด์</a> </h2>
 
                   <?php
-                  require "dbconnect.php"; //แสดงการศึกษา
+                  require "dbconnect.php"; //แสดงมือถือแอนดรอยด์
 
                   $sql = "SELECT * FROM data_post WHERE post_type = 6  ORDER BY post_id DESC LIMIT 1 ";
                   $query = mysqli_query($DBConect,$sql);
@@ -508,30 +509,32 @@ session_start();
               </div>
               <div id="recentComent" class="tab-pane fade" role="tabpanel">
                 <ul class="small_catg popular_catg">
-                  <li>
-                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">งานวิจัย GSMA ชี้จีนจะเป็นตลาด 5G ที่ใหญ่ที่สุดภายในปี 2025</a></h4>
-                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">งานวิจัย GSMA ชี้จีนจะเป็นตลาด 5G ที่ใหญ่ที่สุดภายในปี 2025</a></h4>
-                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="images/112x112.jpg" alt=""></a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">งานวิจัย GSMA ชี้จีนจะเป็นตลาด 5G ที่ใหญ่ที่สุดภายในปี 2025</a></h4>
-                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                      </div>
-                    </div>
-                  </li>
+
+                  <?php
+
+                  $sql = "SELECT * FROM data_post ORDER BY post_id DESC LIMIT 10";
+                  $query = mysqli_query($DBConect,$sql);
+
+                  while ($row = mysqli_fetch_array($query,MYSQLI_ASSOC)){
+
+
+                    $post_id = $row['post_id'];
+
+                    $sql_detail = "SELECT * FROM data_detailpost WHERE post_id = '$post_id'";
+                    $query_detail = mysqli_query($DBConect,$sql_detail);
+                    $row_detail = mysqli_fetch_assoc($query_detail);
+
+                    $detail_substr = iconv_substr($row_detail['detailpost_detail'],0,112,"UTF-8")." ...";
+
+                  echo "<li>";
+                  echo  "<div class='media wow fadeInDown'> <a class='media-left' href=''><img src='images/".$row['post_img']."' alt=''></a>";
+                  echo    "<div class='media-body'>";
+                  echo      "<h4 class='media-heading'><a href=''>".$row['post_name']."</a></h4>";
+                  echo      "<p>".$detail_substr."</p>";
+                  echo    "</div>";
+                  echo  "</div>";
+                  echo "</li>";}
+                  ?>
                 </ul>
               </div>
             </div>
@@ -552,7 +555,7 @@ session_start();
         <div class="col-lg-4 col-md-4 col-sm-4">
           <div class="single_footer_top wow fadeInRight">
             <h2>About Us</h2>
-            <p>Hello everyone , we are students .This website create for practice programming skills.  </p>
+            <p>Hello! We are students.This website create for practice programming skills.</p>
           </div>
         </div>
 

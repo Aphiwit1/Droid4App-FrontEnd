@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>หน้าเกม</title>
+<title>Game Archives | Droid4apps</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,7 +42,7 @@ session_start();
 
         </div>
         <div class="header_bottom">
-          <div class="header_bottom_left"><a class="logo" href="../index.html">Droid<strong>4apps</strong> <span>Review applications</span></a></div>
+          <div class="header_bottom_left"><a class="logo" href="index.php">Droid<strong>4Apps</strong> <span>คิดถึง App คิดถึง Droid4apps</span></a></div>
           <div class="header_bottom_right"><a href="#"><img src="../images/addbanner_728x90_V1.jpg" alt=""></a></div>
         </div>
       </div>
@@ -56,13 +56,13 @@ session_start();
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav custom_nav">
-            <li class=""><a href="../index.php">หน้าแรก</a></li>
-            <li><a href="category_game.php">เกม</a></li>
-            <li><a href="category_photo.php">รูปภาพและวิดิโอ</a></li>
-            <li><a href="category_photo.php">บันเทิง</a></li>
-            <li><a href="category_education.php">การศึกษา</a></li>
-            <li><a href="category_newsAndroid.php">มือถือแอนดรอยด์</a></li>
-              <li><a href="category_other.php">อื่นๆ</a></li>
+            <li class=""><a href="../index.php?page=1">หน้าแรก</a></li>
+            <li><a href="category_game.php?page=1">เกม</a></li>
+            <li><a href="category_photo.php?page=1">รูปภาพและวิดิโอ</a></li>
+            <li><a href="category_entertainment.php?page=1">บันเทิง</a></li>
+            <li><a href="category_education.php?page=1">การศึกษา</a></li>
+            <li><a href="category_newsAndroid.php?page=1">มือถือแอนดรอยด์</a></li>
+              <li><a href="category_other.php?page=1">อื่นๆ</a></li>
           </ul>
         </div>
       </div>
@@ -83,10 +83,24 @@ session_start();
               <?php
               // last update
               require "../dbconnect.php";
-              $sql = "SELECT * FROM data_post WHERE post_type = 1 ORDER BY post_id DESC";
+
+              $x = ($_GET['page']-1)*10; //รับเลชหน้า
+
+
+              $sql = "SELECT * FROM data_post WHERE post_type = 1 ORDER BY post_id DESC LIMIT $x,10";
               $query = mysqli_query($DBConect,$sql);
 
+
+
+
               while ($row = mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+
+                $post_id = $row['post_id'];
+                $sql_detail = "SELECT * FROM data_detailpost WHERE post_id = '$post_id'  LIMIT 1 ";
+                $query_detail = mysqli_query($DBConect,$sql_detail);
+                $row_detail = mysqli_fetch_assoc($query_detail);
+
+                $detail_substr = iconv_substr($row_detail['detailpost_detail'],0,110,"UTF-8")." ...";
 
                 //$_SESSION['head_name'] = $row['post_name'];
                 $post_id = $row['post_id'];
@@ -102,7 +116,7 @@ session_start();
               echo  "<div class='archive_imgcontainer'><img src='../images/".$post_img."' alt=''> </div>";
               echo  "<div class='archive_caption'>";
               echo    "<h2><a href='single.php?id=".$post_id."'>".$post_name."</a></h2>";
-              echo    "<p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris.</p>";
+              echo    "<p>".$detail_substr."</p>";
               echo "</div>";
               echo  "<a class='read_more' href='single.php?id=".$post_id."'><span>Read More</span></a> </div>";
             }
@@ -113,13 +127,22 @@ session_start();
         <div class="pagination_area">
           <nav>
             <ul class="pagination">
-              <li><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+              <?php //แสดงหน้า
+              require "../dbconnect.php";
+
+              $sql = "SELECT * FROM data_post WHERE post_type = 1";
+              $query = mysqli_query($DBConect,$sql);
+              $num = mysqli_num_rows($query);
+              $result = $num/10;
+
+              for ($i = 1; $i <= $result; $i++) {
+                echo "<li><a href='../pages/category_game.php?page=".$i."'>".$i."</a></li>";
+              }
+
+               ?>
+
+
+
             </ul>
           </nav>
         </div>
@@ -130,7 +153,6 @@ session_start();
           <div class="single_bottom_rightbar">
             <ul role="tablist" class="nav nav-tabs custom-tabs">
               <li class="active" role="presentation"><a data-toggle="tab" role="tab" aria-controls="home" href="#mostPopular">Most Popular</a></li>
-              <li role="presentation"><a data-toggle="tab" role="tab" aria-controls="messages" href="#recentComent">Recent Comment</a></li>
             </ul>
             <div class="tab-content">
               <div id="mostPopular" class="tab-pane fade in active" role="tabpanel">
@@ -145,11 +167,19 @@ session_start();
                   $query = mysqli_query($DBConect,$sql);
 
                   while ($row = mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+
+                    $post_id = $row['post_id'];
+                    $sql_detail = "SELECT * FROM data_detailpost WHERE post_id = '$post_id'  LIMIT 1 ";
+                    $query_detail = mysqli_query($DBConect,$sql_detail);
+                    $row_detail = mysqli_fetch_assoc($query_detail);
+
+                    $detail_substr = iconv_substr($row_detail['detailpost_detail'],0,115,"UTF-8")." ...";
+
                     echo"<li>";
                     echo   "<div class'media wow fadeInDown'> <a class='media-left' href=''> <img src='../images/".$row['post_img']."' alt=''> </a>";
                     echo     "<div class='media-body'>";
-                    echo     "<h4 class='media-heading'><a href=''>".$row['post_name']."</a></h4>";
-                    echo       "<p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>";
+                    echo     "<h4 class='media-heading'><a href='../pages/single.php?id=".$row['post_id']."'>".$row['post_name']."</a></h4>";
+                    echo       "<p>".$detail_substr."</p>";
                     echo     "</div>";
                     echo "</div>";
                     echo"</li>";
@@ -159,34 +189,7 @@ session_start();
                    ?>
                 </ul>
               </div>
-              <div id="recentComent" class="tab-pane fade" role="tabpanel">
-                <ul class="small_catg popular_catg">
-                  <li>
-                    <div class="media wow fadeInDown"> <a class="media-left" href="#"> <img src="../images/112x112.jpg" alt=""> </a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a class="media-left" href="#"> <img src="../images/112x112.jpg" alt=""> </a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a class="media-left" href="#"> <img src="../images/112x112.jpg" alt=""> </a>
-                      <div class="media-body">
-                        <h4 class="media-heading"><a href="#">Duis condimentum nunc pretium lobortis </a></h4>
-                        <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a pharetra </p>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
+
               <?php
 
               require "../dbconnect.php";
@@ -221,12 +224,10 @@ session_start();
   <div class="footer_top">
     <div class="container">
       <div class="row">
-
-
         <div class="col-lg-4 col-md-4 col-sm-4">
           <div class="single_footer_top wow fadeInRight">
             <h2>About Us</h2>
-            <p>Hello everyone , we are students .This website create for practice programming skills.  </p>
+            <p>Hello! We are students.This website create for practice programming skills.</p>
           </div>
         </div>
 
@@ -249,7 +250,6 @@ session_start();
       </div>
     </div>
   </div>
-
 </footer>
 <script src="../assets/js/jquery.min.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>
