@@ -49,7 +49,7 @@ session_start();
               <li><a href="index.html">Home</a></li>
               <li><a href="pages/page.html">About</a></li>
               <li><a href="pages/contact.html">Contact</a></li>
-
+              <li><a href="pages/404.html">Error Page</a></li>
             </ul>
           </div>
           <div class="header_top_right">
@@ -60,7 +60,7 @@ session_start();
           </div>
         </div>
         <div class="header_bottom">
-          <div class="header_bottom_left"><a class="logo" href="index.php">Droid<strong>4Apps</strong> <span>คิดถึง App คิดถึง Droid4apps</span></a></div>
+          <div class="header_bottom_left"><a class="logo" href="index.html">Droid<strong>4App</strong> <span>คิดถึง App คิดถึง Droid4apps</span></a></div>
           <div class="header_bottom_right"><a href="#"><img src="images/addbanner_728x90_V1.jpg" alt=""></a></div>
         </div>
       </div>
@@ -347,7 +347,7 @@ session_start();
                   while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)){
                   echo "<ul class='small_catg wow fadeInDown'>";
                   echo  "<li>";
-                  echo    "<div class='media'> <a class='media-left' href=''><img src='images/112x112.jpg' alt=''></a>";
+                  echo    "<div class='media'> <a class='media-left' href=''><img src='images/".$row['post_img']."' alt=''></a>";
                   echo      "<div class='media-body'>";
                   echo        "<h4 class='media-heading'><a href=''>".$row['post_name']."</a></h4>";
                   echo        "<div class='comments_box'> <span class='meta_date'>".$row['post_day']."/".$row['post_month']."/".$row['post_year']."</span> <span class='meta_comment'><a href=''>อ่าน : ".$row['post_view']."</a></span> </div>";
@@ -400,7 +400,7 @@ session_start();
                 while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)){
                 echo "<ul class='small_catg wow fadeInDown'>";
                 echo  "<li>";
-                echo    "<div class='media'> <a class='media-left' href=''><img src='images/112x112.jpg' alt=''></a>";
+                echo    "<div class='media'> <a class='media-left' href=''><img src='images/".$row['post_img']."' alt=''></a>";
                 echo      "<div class='media-body'>";
                 echo        "<h4 class='media-heading'><a href=''>".$row['post_name']."</a></h4>";
                 echo        "<div class='comments_box'> <span class='meta_date'>".$row['post_day']."/".$row['post_month']."/".$row['post_year']."</span> <span class='meta_comment'><a href=''>อ่าน : ".$row['post_view']."</a></span> </div>";
@@ -451,7 +451,7 @@ session_start();
                   while ($row=mysqli_fetch_array($query,MYSQLI_ASSOC)){
                   echo "<ul class='small_catg wow fadeInDown'>";
                   echo  "<li>";
-                  echo    "<div class='media'> <a class='media-left' href=''><img src='images/112x112.jpg' alt=''></a>";
+                  echo    "<div class='media'> <a class='media-left' href=''><img src='images/".$row['post_img']."' alt=''></a>";
                   echo      "<div class='media-body'>";
                   echo        "<h4 class='media-heading'><a href=''>".$row['post_name']."</a></h4>";
                   echo        "<div class='comments_box'> <span class='meta_date'>".$row['post_day']."/".$row['post_month']."/".$row['post_year']."</span> <span class='meta_comment'><a href=''>อ่าน : ".$row['post_view']."</a></span> </div>";
@@ -555,24 +555,7 @@ session_start();
         <div class="col-lg-4 col-md-4 col-sm-4">
           <div class="single_footer_top wow fadeInRight">
             <h2>About Us</h2>
-            <p>Hello! We are students.This website create for practice programming skills.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <div class="footer_bottom">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-          <div class="footer_bottom_left">
-            <p>Copyright &copy; 2045 <a href="index.html">magExpress</a></p>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-          <div class="footer_bottom_right">
-            <p>Developed BY Wpfreeware</p>
+            <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed nec laoreet orci, eget ullamcorper quam. Phasellus lorem neque, </p>
           </div>
         </div>
       </div>

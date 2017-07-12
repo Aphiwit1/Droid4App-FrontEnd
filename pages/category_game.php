@@ -28,16 +28,6 @@ session_start();
 <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
 <div class="container">
   <header id="header">
-    <div class="row">
-      <div class="col-lg-12 col-md-12">
-        <div class="header_top">
-          <div class="header_top_left">
-            <ul class="top_nav">
-              <li><a href="../index.php">Home</a></li>
-              <li><a href="page.html">About</a></li>
-              <li><a href="contact.html">Contact</a></li>
-
-            </ul>
           </div>
 
         </div>
@@ -84,10 +74,10 @@ session_start();
               // last update
               require "../dbconnect.php";
 
-              $x = ($_GET['page']-1)*10; //รับเลชหน้า
+              $x = ($_GET['page']-1)*5; //รับเลชหน้า
 
 
-              $sql = "SELECT * FROM data_post WHERE post_type = 1 ORDER BY post_id DESC LIMIT $x,10";
+              $sql = "SELECT * FROM data_post WHERE post_type = 1 ORDER BY post_id DESC LIMIT $x,5";
               $query = mysqli_query($DBConect,$sql);
 
 
@@ -133,10 +123,11 @@ session_start();
               $sql = "SELECT * FROM data_post WHERE post_type = 1";
               $query = mysqli_query($DBConect,$sql);
               $num = mysqli_num_rows($query);
-              $result = $num/10;
+              $result = $num/5;
 
-              for ($i = 1; $i <= $result; $i++) {
-                echo "<li><a href='../pages/category_game.php?page=".$i."'>".$i."</a></li>";
+              for ($i = 0; $i <= $result; $i++) {
+                $j = $i+1;
+                echo "<li><a href='../pages/category_game.php?page=".$j."'>".$j."</a></li>";
               }
 
                ?>
